@@ -1,17 +1,17 @@
-import { Box, Paper } from "@mui/material";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { useFetchAbilities } from "api/useFetchAbilities";
-import { useFetchAbilityDescriptions } from "api/useFetchAbilityDescriptions";
-import { useFetchPokemon } from "api/useFetchPokemon";
-import { gen1List } from "data";
-import { Pokemon } from "models";
-import loader from "assets/loader.gif";
-import React from "react";
-import { getColumns } from "helper";
+import { Box, Paper } from '@mui/material';
+import { DataGrid, type GridColDef } from '@mui/x-data-grid';
+import { useFetchAbilities } from 'api/useFetchAbilities';
+import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
+import { useFetchPokemon } from 'api/useFetchPokemon';
+import { gen1List } from 'data';
+import { type Pokemon } from 'models';
+import loader from 'assets/loader.gif';
+import React from 'react';
+import { getColumns } from 'helper';
 // pokeapi call on types, programmatically get double type stats, do it in helper
 // https://stackoverflow.com/questions/69952120/render-pokemon-double-type-weaknesses-resistances-in-react
 // add eslint, discord bot project has perfect example
-export const Gen1 = () => {
+export const Gen1 = (): React.JSX.Element => {
 	const pokemon: Pokemon[] = useFetchPokemon(gen1List);
 	const abilities = useFetchAbilities();
 	const descriptions = useFetchAbilityDescriptions(abilities);

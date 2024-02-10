@@ -1,9 +1,9 @@
-import React from "react";
-import { Box, Paper, Tooltip, Typography, Zoom } from "@mui/material";
+import React from 'react';
+import { Box, Paper, Tooltip, Typography, Zoom } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useFetchSprite } from "api/useFetchSprite";
+import { useFetchSprite } from 'api/useFetchSprite';
 
-export const Header = () => {
+export const Header = (): React.JSX.Element => {
 	return (
 		<Paper elevation={3} sx={{ m: 2, p: 4, backgroundColor: '#7A9E9f' }}>
 			<Box

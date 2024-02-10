@@ -1,15 +1,15 @@
-import { Box, Paper } from "@mui/material";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { useFetchAbilities } from "api/useFetchAbilities";
-import { useFetchAbilityDescriptions } from "api/useFetchAbilityDescriptions";
-import { useFetchPokemon } from "api/useFetchPokemon";
-import { gen7List } from "data";
-import { Pokemon } from "models";
-import loader from "assets/loader.gif";
-import React from "react";
-import { getColumns } from "helper";
+import { Box, Paper } from '@mui/material';
+import { DataGrid, type GridColDef } from '@mui/x-data-grid';
+import { useFetchAbilities } from 'api/useFetchAbilities';
+import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
+import { useFetchPokemon } from 'api/useFetchPokemon';
+import { gen7List } from 'data';
+import { type Pokemon } from 'models';
+import loader from 'assets/loader.gif';
+import React from 'react';
+import { getColumns } from 'helper';
 
-export const Gen7 = () => {
+export const Gen7 = (): React.JSX.Element => {
 	const pokemon: Pokemon[] = useFetchPokemon(gen7List);
 	const abilities = useFetchAbilities();
 	const descriptions = useFetchAbilityDescriptions(abilities);

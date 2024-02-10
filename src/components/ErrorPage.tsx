@@ -1,12 +1,12 @@
 import React from 'react';
-import { isRouteErrorResponse, useRouteError } from "react-router-dom";
+import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
 
-export const ErrorPage = () => {
+export const ErrorPage = (): React.JSX.Element => {
 	const error = useRouteError();
 	let errorMessage: string;
 
 	if (isRouteErrorResponse(error)) {
-		errorMessage = error.error?.message || error.statusText;
+		errorMessage = error.statusText;
 	} else if (error instanceof Error) {
 		errorMessage = error.message;
 	} else if (typeof error === 'string') {
@@ -22,4 +22,4 @@ export const ErrorPage = () => {
 			<h2>{errorMessage}</h2>
 		</div>
 	);
-}
+};

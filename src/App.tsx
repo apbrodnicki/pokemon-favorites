@@ -4,13 +4,13 @@ import { Header } from 'components/Header';
 import { Menu } from 'components/Menu';
 import { Footer } from 'components/Footer';
 // weird hover click thing with menu items, i asked wyatt
-export const App = () => {
+export const App = (): React.JSX.Element => {
 	const outlet = useOutlet();
 
 	return (
 		<>
 			<Header />
-			{outlet || <Menu />}
+			{(outlet != null) || <Menu />}
 			<Footer />
 		</>
 	);

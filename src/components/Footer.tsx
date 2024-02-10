@@ -3,7 +3,7 @@ import { useFetchSprite } from 'api/useFetchSprite';
 import React from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-export const Footer = () => {
+export const Footer = (): React.JSX.Element => {
 	return (
 		<Paper elevation={3} sx={{ m: 2, p: 4, backgroundColor: '#7A9E9f' }}>
 			<Box

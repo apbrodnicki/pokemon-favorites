@@ -1,18 +1,18 @@
 export interface Pokemon extends Stats {
-	name: string;
-	sprite: string;
-	types: string[];
-	abilities: string[];
-};
+	name: string,
+	sprite: string,
+	types: string[],
+	abilities: string[],
+}
 
 export interface Stats {
-	hp: number;
-	attack: number;
-	defense: number;
-	'special-attack': number;
-	'special-defense': number;
-	speed: number;
-};
+	hp: number,
+	attack: number,
+	defense: number,
+	'special-attack': number,
+	'special-defense': number,
+	speed: number,
+}
 
 export interface Types {
 	Normal: string,
@@ -33,9 +33,9 @@ export interface Types {
 	Dark: string,
 	Steel: string,
 	Fairy: string,
-};
+}
 
 export interface Ability {
-	name: string;
-	description: string;
-};
+	name: string,
+	description: string,
+}

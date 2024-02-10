@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { App } from './App';
 import { ErrorPage } from 'components/ErrorPage';
 import { Gen1 } from 'components/gens/Gen1';
@@ -24,67 +24,67 @@ import '@fontsource/roboto/700.css';
 
 const router = createBrowserRouter([
 	{
-		path: "/",
+		path: '/',
 		element: <App />,
 		errorElement: <ErrorPage />,
 		children: [
 			{
-				path: "gen1",
+				path: 'gen1',
 				element: <Gen1 />
 			},
 			{
-				path: "gen2",
+				path: 'gen2',
 				element: <Gen2 />
 			},
 			{
-				path: "gen3",
+				path: 'gen3',
 				element: <Gen3 />
 			},
 			{
-				path: "gen4",
+				path: 'gen4',
 				element: <Gen4 />
 			},
 			{
-				path: "gen5",
+				path: 'gen5',
 				element: <Gen5 />
 			},
 			{
-				path: "gen6",
+				path: 'gen6',
 				element: <Gen6 />
 			},
 			{
-				path: "gen7",
+				path: 'gen7',
 				element: <Gen7 />
 			},
 			{
-				path: "gen8",
+				path: 'gen8',
 				element: <Gen8 />
 			},
 			{
-				path: "gen9",
+				path: 'gen9',
 				element: <Gen9 />
 			},
 			{
-				path: "megas",
+				path: 'megas',
 				element: <Megas />
 			},
 			{
-				path: "fossils",
+				path: 'fossils',
 				element: <Fossils />
 			},
 			{
-				path: "legendaries",
+				path: 'legendaries',
 				element: <Legendaries />
 			},
 			{
-				path: "regionals",
+				path: 'regionals',
 				element: <Regionals />
 			},
 		]
 	},
 ]);
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById('root') as Element).render(
 	<React.StrictMode>
 		<RouterProvider router={router} />
 	</React.StrictMode>
