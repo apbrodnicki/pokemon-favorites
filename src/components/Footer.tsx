@@ -1,6 +1,6 @@
-import { Paper, Box, Typography, Link as MuiLink, Tooltip, Zoom } from "@mui/material";
-import { useFetchSprite } from "api/useFetchSprite";
-import React from "react";
+import { Paper, Box, Typography, Link as MuiLink, Tooltip, Zoom } from '@mui/material';
+import { useFetchSprite } from 'api/useFetchSprite';
+import React from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 export const Footer = () => {

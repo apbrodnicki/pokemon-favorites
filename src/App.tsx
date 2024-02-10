@@ -10,7 +10,6 @@ export const App = () => {
 	return (
 		<>
 			<Header />
-			<p>yes</p>
 			{outlet || <Menu />}
 			<Footer />
 		</>

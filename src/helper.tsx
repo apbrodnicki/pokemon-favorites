@@ -1,12 +1,12 @@
-import { Typography, Box, Tooltip, Zoom, LinearProgress } from "@mui/material";
-import { GridColDef } from "@mui/x-data-grid";
-import { typeColors } from "data";
-import { Pokemon, Stats } from "models";
-import React from "react";
+import { Typography, Box, Tooltip, Zoom, LinearProgress } from '@mui/material';
+import { type GridColDef } from '@mui/x-data-grid';
+import { typeColors } from 'data';
+import { type Pokemon, type Stats } from 'models';
+import React from 'react';
 
 export const getSprite = (pokemon): string => {
 	return pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default; // choose gif over png
-}
+};
 
 export const getAbilityDescription = (ability) => {
 	let description: string = '';
@@ -14,11 +14,11 @@ export const getAbilityDescription = (ability) => {
 	for (const entry of ability.effect_entries) {
 		if (entry.language.name === 'en') {
 			description = entry.short_effect;
-			updatedAbility = { [ability.name]: description }
+			updatedAbility = { [ability.name]: description };
 		}
 	}
 
-	return updatedAbility
+	return updatedAbility;
 };
 
 export const getColumns = (descriptions): GridColDef[] => {
@@ -173,7 +173,7 @@ export const getColumns = (descriptions): GridColDef[] => {
 				</Box>
 		},
 	];
-}
+};
 
 export const filterPokemonData = (pokemon): Pokemon => {
 	let name: string;
@@ -209,12 +209,12 @@ export const filterPokemonData = (pokemon): Pokemon => {
 	}
 
 	return {
-		name: name,
+		name,
 		sprite: pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default, // choose gif over png
-		types: types,
-		abilities: abilities,
+		types,
+		abilities,
 		...stats,
-	}
+	};
 };
 
 export const filterPokemonAbilities = (abilities) => {
