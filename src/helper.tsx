@@ -1,5 +1,6 @@
-import { Typography, Box, Tooltip, Zoom, LinearProgress } from '@mui/material';
+import { Typography, Box, LinearProgress } from '@mui/material';
 import { type GridColDef } from '@mui/x-data-grid';
+import { CustomTooltip } from 'components/custom/CustomTooltip';
 import { typeColors } from 'data';
 import { type Pokemon, type Stats } from 'models';
 import React from 'react';
@@ -75,16 +76,12 @@ export const getColumns = (descriptions): GridColDef[] => {
 			renderCell: (param) =>
 				<Box>
 					{param.value.map((ability: string, index: number) => (
-						<Tooltip
+						<CustomTooltip
 							key={index}
 							title={descriptions.map(description => description[ability])}
-							placement='top'
-							TransitionComponent={Zoom}
-							leaveDelay={100}
-							arrow
 						>
 							<Typography my={1} align='center'>{formatAbilityName(ability)}</Typography>
-						</Tooltip>
+						</CustomTooltip>
 					))}
 				</Box>
 		},

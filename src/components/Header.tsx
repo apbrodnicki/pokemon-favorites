@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Paper, Tooltip, Typography, Zoom } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useFetchSprite } from 'api/useFetchSprite';
+import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Header = (): React.JSX.Element => {
 	return (
@@ -13,14 +14,14 @@ export const Header = (): React.JSX.Element => {
 					justifyContent: 'center',
 				}}
 			>
-				<Tooltip title='Aurorus' TransitionComponent={Zoom} placement='top' leaveDelay={100} arrow>
+				<CustomTooltip title='Aurorus'>
 					<Box
 						component='img'
 						src={useFetchSprite('aurorus')}
 						alt='aurorus'
 						mx={2}
 					/>
-				</Tooltip>
+				</CustomTooltip>
 				<Link to="/" style={{ textDecoration: 'none' }}>
 					<Typography
 						variant="h1"
@@ -33,17 +34,17 @@ export const Header = (): React.JSX.Element => {
 							},
 						}}
 					>
-						Pokemon Favorites
+						Pokémon Favorites
 					</Typography>
 				</Link>
-				<Tooltip title='Cradily' TransitionComponent={Zoom} placement='top' leaveDelay={100} arrow>
+				<CustomTooltip title='Cradily'>
 					<Box
 						component='img'
 						src={useFetchSprite('cradily')}
 						alt='cradily'
 						mx={2}
 					/>
-				</Tooltip>
+				</CustomTooltip>
 			</Box>
 		</Paper >
 	);

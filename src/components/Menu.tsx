@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Grid, Paper, Typography, styled } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export const Menu = (): React.JSX.Element => {
