@@ -32,9 +32,11 @@ export const Footer = (): React.JSX.Element => {
 						<Typography variant='subtitle2'>
 							Created by Alex Brodnicki
 						</Typography>
-						<Typography variant="subtitle2">
-							Data provided by PokéAPI
-						</Typography>
+						<MuiLink href='https://pokeapi.co/' target='_blank' underline='hover' color='black'>
+							<Typography variant="subtitle2">
+								Data provided by PokéAPI
+							</Typography>
+						</MuiLink>
 					</Box>
 					<MuiLink href='https://github.com/apbrodnicki' target='_blank'>
 						<GitHubIcon fontSize='large' />
