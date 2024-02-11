@@ -1,6 +1,6 @@
 # Pokémon Favorites
 
-This is an application that showcases a user's favorite list of Pokémon, organized by generation, rarity, region, etc.
+This is an application that showcases a user's favorite list of Pokémon, organized by generation, rarity, region, etc.\
 If you want to use it and make your own favorites, simply edit the values in `src/data.ts`.
 
 ## Packages
