@@ -10,7 +10,7 @@ export const App = (): React.JSX.Element => {
 	return (
 		<>
 			<Header />
-			{(outlet != null) || <Menu />}
+			{outlet ?? <Menu />}
 			<Footer />
 		</>
 	);
