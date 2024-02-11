@@ -1,4 +1,4 @@
-import { type Types } from 'models';
+import { type Types } from 'models/models';
 
 export const gen1List: string[] = [
 	'bulbasaur',

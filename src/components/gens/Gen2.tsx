@@ -4,20 +4,21 @@ import { useFetchAbilities } from 'api/useFetchAbilities';
 import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
 import { useFetchPokemon } from 'api/useFetchPokemon';
 import { gen2List } from 'data';
-import { type Pokemon } from 'models';
+import { type Pokemon } from 'models/models';
 import loader from 'assets/loader.gif';
-import React from 'react';
+import React, { useState } from 'react';
 import { getColumns } from 'helper';
 
 export const Gen2 = (): React.JSX.Element => {
-	const pokemon: Pokemon[] = useFetchPokemon(gen2List);
+	const [isLoadingPokemon, setIsLoadingPokemon] = useState<boolean>(false);
+	const pokemon: Pokemon[] = useFetchPokemon(gen2List, setIsLoadingPokemon);
 	const abilities = useFetchAbilities();
-	const descriptions = useFetchAbilityDescriptions(abilities);
-	const columns: GridColDef[] = getColumns(descriptions);
+	const abilitiesWithDescriptions = useFetchAbilityDescriptions(abilities);
+	const columns: GridColDef[] = getColumns(abilitiesWithDescriptions);
 
 	return (
 		<>
-			{pokemon && descriptions ? (
+			{!isLoadingPokemon ? (
 				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 					<Box height={700} sx={{
 						'& .header': {

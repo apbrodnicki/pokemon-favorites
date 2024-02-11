@@ -2,16 +2,17 @@ import { Typography, Box, LinearProgress } from '@mui/material';
 import { type GridColDef } from '@mui/x-data-grid';
 import { CustomTooltip } from 'components/custom/CustomTooltip';
 import { typeColors } from 'data';
-import { type GenericPokemon, type Pokemon, type Stats } from 'models';
+import { type GenericPokemon, type GenericAbility, type GenericAbilities } from 'models/genericModels';
+import { type Stats, type Pokemon, type Types, type Ability } from 'models/models';
 import React from 'react';
 
 export const getSprite = (pokemon: GenericPokemon): string => {
 	return pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default; // choose gif over png
 };
 
-export const getAbilityDescription = (ability) => {
+export const getAbilityDescription = (ability: GenericAbility): Ability => {
 	let description: string = '';
-	let updatedAbility = {};
+	let updatedAbility: Ability = {};
 	for (const entry of ability.effect_entries) {
 		if (entry.language.name === 'en') {
 			description = entry.short_effect;
@@ -22,7 +23,7 @@ export const getAbilityDescription = (ability) => {
 	return updatedAbility;
 };
 
-export const getColumns = (descriptions): GridColDef[] => {
+export const getColumns = (abilitiesWithDescriptions: Ability[]): GridColDef[] => {
 	return [
 		{
 			field: 'name',
@@ -53,7 +54,7 @@ export const getColumns = (descriptions): GridColDef[] => {
 			headerClassName: 'header',
 			align: 'center',
 			renderCell: (param) =>
-				param.value.map((type: string, index: number) => (
+				param.value.map((type: keyof Types, index: number) => (
 					<Box
 						key={index}
 						sx={{
@@ -75,14 +76,18 @@ export const getColumns = (descriptions): GridColDef[] => {
 			align: 'center',
 			renderCell: (param) =>
 				<Box>
-					{param.value.map((ability: string, index: number) => (
-						<CustomTooltip
-							key={index}
-							title={descriptions.map(description => description[ability])}
-						>
-							<Typography my={1} align='center'>{formatAbilityName(ability)}</Typography>
-						</CustomTooltip>
-					))}
+					{param.value.map((ability: string, index: number) => {
+						const title = abilitiesWithDescriptions.find(currentAbility => Object.keys(currentAbility).includes(ability));
+
+						return (
+							<CustomTooltip
+								key={index}
+								title={(title != null) ? title[ability] : ''}
+							>
+								<Typography my={1} align='center'>{formatAbilityName(ability)}</Typography>
+							</CustomTooltip>
+						);
+					})}
 				</Box>
 		},
 		{
@@ -214,10 +219,10 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 	};
 };
 
-export const filterPokemonAbilities = (abilities) => {
+export const filterPokemonAbilities = (abilities: GenericAbilities): string[] => {
 	const abilityArray: string[] = [];
 
-	for (const ability of abilities) {
+	for (const ability of abilities.results) {
 		abilityArray.push(ability.name);
 	}
 
@@ -226,7 +231,6 @@ export const filterPokemonAbilities = (abilities) => {
 
 export const formatAbilityName = (name: string): string => {
 	const updatedNameArray: string[] = [];
-
 
 	for (const item of name.split('-')) {
 		updatedNameArray.push(capitalizeFirstLetter(item));

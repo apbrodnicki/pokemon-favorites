@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { fetchAbility } from './fetchAbility';
 import { getAbilityDescription } from 'helper';
+import { type Ability } from 'models/models';
 
-export const useFetchAbilityDescriptions = (abilities: string[]) => {
-	const [descriptions, setDescriptions] = useState<any>();
+export const useFetchAbilityDescriptions = (abilities: string[]): Ability[] => {
+	const [descriptions, setDescriptions] = useState<Ability[]>([]);
 
 	useEffect(() => {
 		const fetchData = async (): Promise<void> => {
