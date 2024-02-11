@@ -1,3 +1,43 @@
+export interface GenericPokemon {
+	name: string,
+	types: Array<{
+		slot: number,
+		type: {
+			name: string,
+			url: string,
+		},
+	}>,
+	abilities: Array<{
+		slot: number,
+		is_hidden: boolean,
+		ability: {
+			name: string,
+			url: string,
+		},
+	}>,
+	stats: Array<{
+		base_stat: number,
+		effort: number,
+		stat: {
+			name: 'hp' | 'attack' | 'defense' | 'special-attack' | 'special-defense' | 'speed',
+			url: string,
+		},
+	}>,
+	sprites: {
+		front_default: string,
+		versions: {
+			'generation-v' : {
+				'black-white': {
+					animated: {
+						front_default: string,
+					}
+				}
+			}
+		},
+	},
+	[key: string]: any,
+}
+
 export interface Pokemon extends Stats {
 	name: string,
 	sprite: string,

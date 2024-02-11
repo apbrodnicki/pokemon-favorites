@@ -2,10 +2,10 @@ import { Typography, Box, LinearProgress } from '@mui/material';
 import { type GridColDef } from '@mui/x-data-grid';
 import { CustomTooltip } from 'components/custom/CustomTooltip';
 import { typeColors } from 'data';
-import { type Pokemon, type Stats } from 'models';
+import { type GenericPokemon, type Pokemon, type Stats } from 'models';
 import React from 'react';
 
-export const getSprite = (pokemon): string => {
+export const getSprite = (pokemon: GenericPokemon): string => {
 	return pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default; // choose gif over png
 };
 
@@ -172,7 +172,7 @@ export const getColumns = (descriptions): GridColDef[] => {
 	];
 };
 
-export const filterPokemonData = (pokemon): Pokemon => {
+export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 	let name: string;
 	const types: string[] = [];
 	const abilities: string[] = [];
