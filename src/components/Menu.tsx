@@ -15,18 +15,30 @@ export const Menu = (): React.JSX.Element => {
 			background-color: #7A9E9f;
 		};
 	`;
+	const StyledLink = styled(Link)`
+		text-decoration: none;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:active {
+			color: rgb(85, 26, 139);
+		}
+	`;
 
 	return (
 		<Grid container spacing={2}>
 			{pages.map((page: string, index: number) => (
 				<Grid item md={3} xs={6} key={index}>
-					<Link to={page.toLowerCase()} style={{ textDecoration: 'none', width: '100%' }}>
-						<StyledPaper elevation={3} sx={{ m: 5 }}>
+					<StyledPaper elevation={3} sx={{ m: 5 }}>
+						<StyledLink to={page.toLowerCase()}>
 							<Typography sx={{ typography: { md: 'h6', xs: 'subtitle1' } }} mx={1}>
 								{page}
 							</Typography>
-						</StyledPaper>
-					</Link>
+						</StyledLink>
+					</StyledPaper>
 				</Grid>
 			))}
 		</Grid>

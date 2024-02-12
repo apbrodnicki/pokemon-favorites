@@ -22,21 +22,22 @@ export const Header = (): React.JSX.Element => {
 						mx={2}
 					/>
 				</CustomTooltip>
-				<Link to="/" style={{ textDecoration: 'none' }}>
-					<Typography
-						variant="h1"
-						color='black'
-						align="center"
-						sx={{
-							'&:hover': {
-								textShadow: '5px 5px 10px #B8D8D8',
-								transition: '.3s',
-							},
-						}}
-					>
+				<CustomTooltip title='	Home Page'>
+					<Link to="/" style={{ textDecoration: 'none' }}>
+						<Typography
+							color='black'
+							align="center"
+							sx={{
+								typography: {
+									md: 'h1',
+									xs: 'h6'
+								}
+							}}
+						>
 						Pokémon Favorites
-					</Typography>
-				</Link>
+						</Typography>
+					</Link>
+				</CustomTooltip>
 				<CustomTooltip title='Cradily'>
 					<Box
 						component='img'
