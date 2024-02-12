@@ -1,26 +1,15 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { App } from './App';
-import { ErrorPage } from 'components/ErrorPage';
-import { Gen1 } from 'components/gens/Gen1';
-import { Gen2 } from 'components/gens/Gen2';
-import { Gen3 } from 'components/gens/Gen3';
-import { Gen4 } from 'components/gens/Gen4';
-import { Gen5 } from 'components/gens/Gen5';
-import { Gen6 } from 'components/gens/Gen6';
-import { Gen7 } from 'components/gens/Gen7';
-import { Gen8 } from 'components/gens/Gen8';
-import { Gen9 } from 'components/gens/Gen9';
-import { Megas } from 'components/misc/Megas';
-import { Fossils } from 'components/misc/Fossils';
-import { Legendaries } from 'components/misc/Legendaries';
-import { Regionals } from 'components/misc/Regionals';
-import './App.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { ErrorPage } from 'components/ErrorPage';
+import { PokemonDataGrid } from 'components/PokemonDataGrid';
+import { type PokemonListsTemplate } from 'models/models';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { App } from './App';
+import './App.css';
 
 const router = createBrowserRouter([
 	{
@@ -30,55 +19,55 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: 'gen1',
-				element: <Gen1 />
+				element: <PokemonDataGrid title={'gen1List' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'gen2',
-				element: <Gen2 />
+				element: <PokemonDataGrid title={'gen2List' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'gen3',
-				element: <Gen3 />
+				element: <PokemonDataGrid title={'gen3List' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'gen4',
-				element: <Gen4 />
+				element: <PokemonDataGrid title={'gen4List' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'gen5',
-				element: <Gen5 />
+				element: <PokemonDataGrid title={'gen5List' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'gen6',
-				element: <Gen6 />
+				element: <PokemonDataGrid title={'gen6List' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'gen7',
-				element: <Gen7 />
+				element: <PokemonDataGrid title={'gen7List' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'gen8',
-				element: <Gen8 />
+				element: <PokemonDataGrid title={'gen8List' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'gen9',
-				element: <Gen9 />
+				element: <PokemonDataGrid title={'gen9List' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'megas',
-				element: <Megas />
+				element: <PokemonDataGrid title={'megasList' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'fossils',
-				element: <Fossils />
+				element: <PokemonDataGrid title={'fossilsList' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'legendaries',
-				element: <Legendaries />
+				element: <PokemonDataGrid title={'legendariesList' as keyof PokemonListsTemplate} />
 			},
 			{
 				path: 'regionals',
-				element: <Regionals />
+				element: <PokemonDataGrid title={'regionalsList' as keyof PokemonListsTemplate} />
 			},
 		]
 	},

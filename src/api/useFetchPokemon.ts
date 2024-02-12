@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
-import type React from 'react';
-import { type Pokemon } from 'models/models';
-
 import { fetchPokemon } from 'api/fetchPokemon';
 import { filterPokemonData } from 'helper';
+import { type Pokemon } from 'models/models';
+import type React from 'react';
+import { useEffect, useState } from 'react';
 
 export const useFetchPokemon = (pokemonList: string[], setIsLoadingPokemon: React.Dispatch<React.SetStateAction<boolean>>): Pokemon[] => {
 	const [pokemon, setPokemon] = useState<Pokemon[]>([]);

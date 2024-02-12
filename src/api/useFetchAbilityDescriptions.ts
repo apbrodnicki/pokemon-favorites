@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { fetchAbility } from './fetchAbility';
 import { getAbilityDescription } from 'helper';
 import { type Ability } from 'models/models';
+import { useEffect, useState } from 'react';
+import { fetchAbility } from './fetchAbility';
 
 export const useFetchAbilityDescriptions = (abilities: string[]): Ability[] => {
 	const [descriptions, setDescriptions] = useState<Ability[]>([]);

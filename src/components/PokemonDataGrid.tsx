@@ -3,16 +3,22 @@ import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import { useFetchAbilities } from 'api/useFetchAbilities';
 import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
 import { useFetchPokemon } from 'api/useFetchPokemon';
-import { gen1List } from 'data';
-import { type Pokemon } from 'models/models';
 import loader from 'assets/loader.gif';
+import { getColumns, getPokemonList } from 'helper';
+import { type Pokemon, type PokemonListsTemplate } from 'models/models';
 import React, { useState } from 'react';
-import { getColumns } from 'helper';
 // pokeapi call on types, programmatically get double type stats, do it in helper
 // https://stackoverflow.com/questions/69952120/render-pokemon-double-type-weaknesses-resistances-in-react
-export const Gen1 = (): React.JSX.Element => {
+
+interface PokemonDataGridProps {
+	title: keyof PokemonListsTemplate,
+}
+
+export const PokemonDataGrid = (props: PokemonDataGridProps): React.JSX.Element => {
 	const [isLoadingPokemon, setIsLoadingPokemon] = useState<boolean>(false);
-	const pokemon: Pokemon[] = useFetchPokemon(gen1List, setIsLoadingPokemon);
+
+	const pokemonList = getPokemonList(props.title);
+	const pokemon: Pokemon[] = useFetchPokemon(pokemonList, setIsLoadingPokemon);
 	const abilities = useFetchAbilities();
 	const abilitiesWithDescriptions = useFetchAbilityDescriptions(abilities);
 	const columns: GridColDef[] = getColumns(abilitiesWithDescriptions);

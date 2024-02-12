@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { fetchAbilities } from './fetchAbilities';
 import { filterPokemonAbilities } from 'helper';
 import { type GenericAbilities } from 'models/genericModels';
+import { useEffect, useState } from 'react';
+import { fetchAbilities } from './fetchAbilities';
 
 export const useFetchAbilities = (): string[] => {
 	const [abilities, setAbilities] = useState<string[]>([]);

@@ -266,7 +266,7 @@ export const gen9List: string[] = [
 
 ];
 
-export const megas: string[] = [
+export const megasList: string[] = [
 	'venusaur-mega',
 	'charizard-mega-x',
 	'charizard-mega-y',
@@ -307,7 +307,7 @@ export const megas: string[] = [
 	'diancie-mega',
 ];
 
-export const fossils: string[] = [
+export const fossilsList: string[] = [
 	'omastar',
 	'kabutops',
 	'aerodactyl',
@@ -325,11 +325,11 @@ export const fossils: string[] = [
 	'arctovish',
 ];
 
-export const legendaries: string[] = [
+export const legendariesList: string[] = [
 
 ];
 
-export const regionals: string[] = [
+export const regionalsList: string[] = [
 	'sandslash-alola',
 	'golem-alola',
 	'muk-alola',
@@ -341,6 +341,22 @@ export const regionals: string[] = [
 	'darmanitan-galar-standard',
 	'goodra-hisui',
 ];
+
+export const pokemonLists = {
+	gen1List,
+	gen2List,
+	gen3List,
+	gen4List,
+	gen5List,
+	gen6List,
+	gen7List,
+	gen8List,
+	gen9List,
+	megasList,
+	fossilsList,
+	legendariesList,
+	regionalsList
+};
 
 export const typeColors: Types = {
 	Normal: '#A8A878',

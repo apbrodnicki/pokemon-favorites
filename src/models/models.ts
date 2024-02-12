@@ -35,4 +35,20 @@ export interface Types {
 	Fairy: string,
 }
 
+export interface PokemonListsTemplate {
+	gen1List: string[],
+	gen2List: string[],
+	gen3List: string[],
+	gen4List: string[],
+	gen5List: string[],
+	gen6List: string[],
+	gen7List: string[],
+	gen8List: string[],
+	gen9List: string[],
+	megasList: string[],
+	fossilsList: string[],
+	legendariesList: string[],
+	regionalsList: string[],
+}
+
 export type Ability = Record<string, string>;

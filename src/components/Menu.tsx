@@ -1,5 +1,5 @@
-import React from 'react';
 import { Grid, Paper, Typography, styled } from '@mui/material';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Menu = (): React.JSX.Element => {
@@ -22,7 +22,7 @@ export const Menu = (): React.JSX.Element => {
 				<Grid item md={3} xs={6} key={index}>
 					<Link to={page.toLowerCase()} style={{ textDecoration: 'none', width: '100%' }}>
 						<StyledPaper elevation={3} sx={{ m: 5 }}>
-							<Typography variant='h4' mx={1}>
+							<Typography sx={{ typography: { md: 'h6', xs: 'subtitle1' } }} mx={1}>
 								{page}
 							</Typography>
 						</StyledPaper>

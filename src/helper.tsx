@@ -1,9 +1,9 @@
-import { Typography, Box, LinearProgress } from '@mui/material';
+import { Box, LinearProgress, Typography } from '@mui/material';
 import { type GridColDef } from '@mui/x-data-grid';
 import { CustomTooltip } from 'components/custom/CustomTooltip';
-import { typeColors } from 'data';
-import { type GenericPokemon, type GenericAbility, type GenericAbilities } from 'models/genericModels';
-import { type Stats, type Pokemon, type Types, type Ability } from 'models/models';
+import { pokemonLists, typeColors } from 'data';
+import { type GenericAbilities, type GenericAbility, type GenericPokemon } from 'models/genericModels';
+import { type Ability, type Pokemon, type PokemonListsTemplate, type Stats, type Types } from 'models/models';
 import React from 'react';
 
 export const getSprite = (pokemon: GenericPokemon): string => {
@@ -241,4 +241,8 @@ export const formatAbilityName = (name: string): string => {
 
 export const capitalizeFirstLetter = (word: string): string => {
 	return word.charAt(0).toUpperCase() + word.slice(1);
+};
+
+export const getPokemonList = (list: keyof PokemonListsTemplate): string[] => {
+	return pokemonLists[list];
 };

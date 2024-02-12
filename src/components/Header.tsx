@@ -1,7 +1,7 @@
-import React from 'react';
 import { Box, Paper, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
 import { useFetchSprite } from 'api/useFetchSprite';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Header = (): React.JSX.Element => {
