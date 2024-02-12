@@ -16,16 +16,19 @@ interface PokemonDataGridProps {
 
 export const PokemonDataGrid = (props: PokemonDataGridProps): React.JSX.Element => {
 	const [isLoadingPokemon, setIsLoadingPokemon] = useState<boolean>(false);
+	const [isLoadingAbilities, setIsLoadingAbilities] = useState<boolean>(false);
+	const [isLoadingAbilityDescriptions, setIsLoadingAbilityDescriptions] = useState<boolean>(false);
+	const isLoading = isLoadingPokemon || isLoadingAbilities || isLoadingAbilityDescriptions;
 
 	const pokemonList = getPokemonList(props.title);
-	const pokemon: Pokemon[] = useFetchPokemon(pokemonList, setIsLoadingPokemon);
-	const abilities = useFetchAbilities();
-	const abilitiesWithDescriptions = useFetchAbilityDescriptions(abilities);
+	const pokemon: Pokemon[] = useFetchPokemon({ pokemonList, setIsLoadingPokemon });
+	const abilities = useFetchAbilities({ setIsLoadingAbilities });
+	const abilitiesWithDescriptions = useFetchAbilityDescriptions({ abilities, setIsLoadingAbilityDescriptions });
 	const columns: GridColDef[] = getColumns(abilitiesWithDescriptions);
 
 	return (
 		<>
-			{!isLoadingPokemon ? (
+			{!isLoading ? (
 				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 					<Box height={700} sx={{
 						'& .header': {

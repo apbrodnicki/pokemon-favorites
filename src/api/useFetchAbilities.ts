@@ -1,15 +1,28 @@
 import { filterPokemonAbilities } from 'helper';
 import { type GenericAbilities } from 'models/genericModels';
+import type React from 'react';
 import { useEffect, useState } from 'react';
 import { fetchAbilities } from './fetchAbilities';
 
-export const useFetchAbilities = (): string[] => {
+interface useFetchAbilitiesProps {
+	setIsLoadingAbilities: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const useFetchAbilities = (props: useFetchAbilitiesProps): string[] => {
 	const [abilities, setAbilities] = useState<string[]>([]);
 
 	useEffect(() => {
-		void fetchAbilities()
-			.then((response: GenericAbilities) => response)
-			.then((result: GenericAbilities) => { setAbilities(filterPokemonAbilities(result)); });
+		fetchAbilities()
+			.then((response: GenericAbilities) => {
+				props.setIsLoadingAbilities(true);
+				return response;
+			}).then((result: GenericAbilities) => {
+				setAbilities(filterPokemonAbilities(result));
+			}).catch((error) => {
+				console.log(error);
+			}).finally(() => {
+				props.setIsLoadingAbilities(false);
+			});
 	}, []);
 
 	return abilities;

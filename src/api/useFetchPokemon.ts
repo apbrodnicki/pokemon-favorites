@@ -4,26 +4,31 @@ import { type Pokemon } from 'models/models';
 import type React from 'react';
 import { useEffect, useState } from 'react';
 
-export const useFetchPokemon = (pokemonList: string[], setIsLoadingPokemon: React.Dispatch<React.SetStateAction<boolean>>): Pokemon[] => {
+interface useFetchPokemonProps {
+	pokemonList: string[],
+	setIsLoadingPokemon: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const useFetchPokemon = (props: useFetchPokemonProps): Pokemon[] => {
 	const [pokemon, setPokemon] = useState<Pokemon[]>([]);
 
 	useEffect(() => {
 		const fetchData = async (): Promise<void> => {
 			try {
-				setIsLoadingPokemon(true);
-				const promises = pokemonList.map(async (mon: string) => await fetchPokemon(mon));
+				props.setIsLoadingPokemon(true);
+				const promises = props.pokemonList.map(async (mon: string) => await fetchPokemon(mon));
 				const pokemonData = await Promise.all(promises);
 				const filteredPokemon = pokemonData.map(filterPokemonData);
 				setPokemon(filteredPokemon);
 			} catch (error) {
 				console.log('Error fetching Pokémon ->', error);
 			} finally {
-				setIsLoadingPokemon(false);
+				props.setIsLoadingPokemon(false);
 			}
 		};
 
 		void fetchData();
-	}, [pokemonList]);
+	}, [props.pokemonList]);
 
 	return pokemon;
 };
