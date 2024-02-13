@@ -9,15 +9,15 @@ import { type Pokemon, type PokemonListsTemplate } from 'models/models';
 import React, { useState } from 'react';
 // pokeapi call on types, programmatically get double type stats, do it in helper
 // https://stackoverflow.com/questions/69952120/render-pokemon-double-type-weaknesses-resistances-in-react
-
+// add header of page to know where you are
 interface PokemonDataGridProps {
 	title: keyof PokemonListsTemplate,
 }
 
 export const PokemonDataGrid = (props: PokemonDataGridProps): React.JSX.Element => {
-	const [isLoadingPokemon, setIsLoadingPokemon] = useState<boolean>(false);
-	const [isLoadingAbilities, setIsLoadingAbilities] = useState<boolean>(false);
-	const [isLoadingAbilityDescriptions, setIsLoadingAbilityDescriptions] = useState<boolean>(false);
+	const [isLoadingPokemon, setIsLoadingPokemon] = useState<boolean>(true);
+	const [isLoadingAbilities, setIsLoadingAbilities] = useState<boolean>(true);
+	const [isLoadingAbilityDescriptions, setIsLoadingAbilityDescriptions] = useState<boolean>(true);
 	const isLoading = isLoadingPokemon || isLoadingAbilities || isLoadingAbilityDescriptions;
 
 	const pokemonList = getPokemonList(props.title);

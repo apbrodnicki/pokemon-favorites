@@ -13,16 +13,10 @@ export const useFetchAbilities = (props: useFetchAbilitiesProps): string[] => {
 
 	useEffect(() => {
 		fetchAbilities()
-			.then((response: GenericAbilities) => {
-				props.setIsLoadingAbilities(true);
-				return response;
-			}).then((result: GenericAbilities) => {
-				setAbilities(filterPokemonAbilities(result));
-			}).catch((error) => {
-				console.log(error);
-			}).finally(() => {
-				props.setIsLoadingAbilities(false);
-			});
+			.then((response: GenericAbilities) => response)
+			.then((result: GenericAbilities) => { setAbilities(filterPokemonAbilities(result)); })
+			.catch((error) => { console.log(error); })
+			.finally(() => { props.setIsLoadingAbilities(false); });
 	}, []);
 
 	return abilities;

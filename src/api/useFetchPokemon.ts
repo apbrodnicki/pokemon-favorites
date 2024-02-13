@@ -15,7 +15,6 @@ export const useFetchPokemon = (props: useFetchPokemonProps): Pokemon[] => {
 	useEffect(() => {
 		const fetchData = async (): Promise<void> => {
 			try {
-				props.setIsLoadingPokemon(true);
 				const promises = props.pokemonList.map(async (mon: string) => await fetchPokemon(mon));
 				const pokemonData = await Promise.all(promises);
 				const filteredPokemon = pokemonData.map(filterPokemonData);
