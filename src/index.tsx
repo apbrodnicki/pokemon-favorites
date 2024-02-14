@@ -19,55 +19,55 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: 'gen1',
-				element: <PokemonDataGrid title={'gen1List' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'gen1List' as keyof PokemonListsTemplate} title='Gen 1' />
 			},
 			{
 				path: 'gen2',
-				element: <PokemonDataGrid title={'gen2List' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'gen2List' as keyof PokemonListsTemplate} title='Gen 2' />
 			},
 			{
 				path: 'gen3',
-				element: <PokemonDataGrid title={'gen3List' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'gen3List' as keyof PokemonListsTemplate} title='Gen 3' />
 			},
 			{
 				path: 'gen4',
-				element: <PokemonDataGrid title={'gen4List' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'gen4List' as keyof PokemonListsTemplate} title='Gen 4' />
 			},
 			{
 				path: 'gen5',
-				element: <PokemonDataGrid title={'gen5List' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'gen5List' as keyof PokemonListsTemplate} title='Gen 5' />
 			},
 			{
 				path: 'gen6',
-				element: <PokemonDataGrid title={'gen6List' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'gen6List' as keyof PokemonListsTemplate} title='Gen 6' />
 			},
 			{
 				path: 'gen7',
-				element: <PokemonDataGrid title={'gen7List' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'gen7List' as keyof PokemonListsTemplate} title='Gen 7' />
 			},
 			{
 				path: 'gen8',
-				element: <PokemonDataGrid title={'gen8List' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'gen8List' as keyof PokemonListsTemplate} title='Gen 8' />
 			},
 			{
 				path: 'gen9',
-				element: <PokemonDataGrid title={'gen9List' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'gen9List' as keyof PokemonListsTemplate} title='Gen 9' />
 			},
 			{
 				path: 'megas',
-				element: <PokemonDataGrid title={'megasList' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'megasList' as keyof PokemonListsTemplate} title='Megas' />
 			},
 			{
 				path: 'fossils',
-				element: <PokemonDataGrid title={'fossilsList' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'fossilsList' as keyof PokemonListsTemplate} title='Fossils' />
 			},
 			{
 				path: 'legendaries',
-				element: <PokemonDataGrid title={'legendariesList' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'legendariesList' as keyof PokemonListsTemplate} title='Legendaries' />
 			},
 			{
 				path: 'regionals',
-				element: <PokemonDataGrid title={'regionalsList' as keyof PokemonListsTemplate} />
+				element: <PokemonDataGrid list={'regionalsList' as keyof PokemonListsTemplate} title='Regionals' />
 			},
 		]
 	},
