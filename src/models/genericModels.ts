@@ -39,6 +39,12 @@ export interface GenericAbility {
 			name: string,
 		}
 	}>,
+	flavor_text_entries: Array<{
+		flavor_text: string,
+		language: {
+			name: string,
+		}
+	}>
 	[key: string]: any,
 }
 

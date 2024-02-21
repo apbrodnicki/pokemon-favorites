@@ -14,10 +14,19 @@ export const getAbilityDescription = (ability: GenericAbility): Ability => {
 	let description: string = '';
 	let updatedAbility: Ability = {};
 
-	for (const entry of ability.effect_entries) {
-		if (entry.language.name === 'en') {
-			description = entry.short_effect;
-			updatedAbility = { [ability.name]: description };
+	if (ability.effect_entries.length > 0) {
+		for (const entry of ability.effect_entries) {
+			if (entry.language.name === 'en') {
+				description = entry.short_effect;
+				updatedAbility = { [ability.name]: description };
+			}
+		}
+	} else if (ability.flavor_text_entries.length > 0) {
+		for (const entry of ability.flavor_text_entries) {
+			if (entry.language.name === 'en') {
+				description = entry.flavor_text;
+				updatedAbility = { [ability.name]: description };
+			}
 		}
 	}
 

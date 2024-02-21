@@ -8,7 +8,6 @@ import { type Pokemon, type PokemonListsTemplate } from 'models/models';
 import React, { useState } from 'react';
 // pokeapi call on types, programmatically get double type stats, do it in helper
 // https://stackoverflow.com/questions/69952120/render-pokemon-double-type-weaknesses-resistances-in-react
-// add header of page to know where you are
 interface PokemonDataGridProps {
 	list: keyof PokemonListsTemplate,
 	title: string,
