@@ -1,10 +1,9 @@
 import { Box, Grid, Paper, Typography } from '@mui/material';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
-import { useFetchAbilities } from 'api/useFetchAbilities';
 import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
 import { useFetchPokemon } from 'api/useFetchPokemon';
 import loader from 'assets/loader.gif';
-import { getColumns, getPokemonList } from 'helper';
+import { getColumns, getPokemonList, reduceAbilitiesArray } from 'helper';
 import { type Pokemon, type PokemonListsTemplate } from 'models/models';
 import React, { useState } from 'react';
 // pokeapi call on types, programmatically get double type stats, do it in helper
@@ -17,13 +16,13 @@ interface PokemonDataGridProps {
 
 export const PokemonDataGrid = (props: PokemonDataGridProps): React.JSX.Element => {
 	const [isLoadingPokemon, setIsLoadingPokemon] = useState<boolean>(true);
-	const [isLoadingAbilities, setIsLoadingAbilities] = useState<boolean>(true);
 	const [isLoadingAbilityDescriptions, setIsLoadingAbilityDescriptions] = useState<boolean>(true);
-	const isLoading = isLoadingPokemon || isLoadingAbilities || isLoadingAbilityDescriptions;
+	const isLoading = isLoadingPokemon || isLoadingAbilityDescriptions;
 
 	const pokemonList = getPokemonList(props.list);
-	const pokemon: Pokemon[] = useFetchPokemon({ pokemonList, setIsLoadingPokemon });
-	const abilities = useFetchAbilities({ setIsLoadingAbilities });
+	const pokemon = useFetchPokemon({ pokemonList, setIsLoadingPokemon });
+	const abilitiesList = pokemon.map(mon => mon.abilities);
+	const abilities = reduceAbilitiesArray(abilitiesList);
 	const abilitiesWithDescriptions = useFetchAbilityDescriptions({ abilities, setIsLoadingAbilityDescriptions });
 	const columns: GridColDef[] = getColumns(abilitiesWithDescriptions);
 

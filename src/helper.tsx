@@ -13,6 +13,7 @@ export const getSprite = (pokemon: GenericPokemon): string => {
 export const getAbilityDescription = (ability: GenericAbility): Ability => {
 	let description: string = '';
 	let updatedAbility: Ability = {};
+
 	for (const entry of ability.effect_entries) {
 		if (entry.language.name === 'en') {
 			description = entry.short_effect;
@@ -326,4 +327,19 @@ export const getProgressColor = (progressValue: number): string => {
 
 export const getPokemonList = (list: keyof PokemonListsTemplate): string[] => {
 	return pokemonLists[list];
+};
+
+export const reduceAbilitiesArray = (abilities: string[][]): string[] => {
+	return abilities.reduce(
+		(accumulator, currentArray) => {
+			for (const currentAbility of currentArray) {
+				if (!accumulator.includes(currentAbility)) {
+					accumulator.push(currentAbility);
+				}
+			}
+
+			return accumulator;
+		},
+		[]
+	);
 };

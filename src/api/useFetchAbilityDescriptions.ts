@@ -15,7 +15,7 @@ export const useFetchAbilityDescriptions = (props: useFetchAbilityDescriptionsPr
 	useEffect(() => {
 		const fetchData = async (): Promise<void> => {
 			try {
-				const promises = props.abilities?.map(async (ability: string) => await fetchAbility(ability));
+				const promises = props.abilities.map(async (ability: string) => await fetchAbility(ability));
 				const abilityData = await Promise.all(promises);
 				const abilityDescriptions = abilityData.map(getAbilityDescription);
 				setDescriptions(abilityDescriptions);
@@ -27,7 +27,7 @@ export const useFetchAbilityDescriptions = (props: useFetchAbilityDescriptionsPr
 		};
 
 		void fetchData();
-	}, [props.abilities]);
+	}, [props.abilities.join(',')]);
 
 	return descriptions;
 };
