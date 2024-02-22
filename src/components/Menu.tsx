@@ -1,10 +1,10 @@
 import { Grid, Paper, Typography, styled } from '@mui/material';
-import { formatMenuPage } from 'helper';
+import { pages } from 'data';
+import { formatPageForRoute } from 'helper';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Menu = (): React.JSX.Element => {
-	const pages = ['Gen 1', 'Gen 2', 'Gen 3', 'Gen 4', 'Gen 5', 'Gen 6', 'Gen 7', 'Gen 8', 'Gen 9', 'Megas', 'Fossils', 'Legendaries', 'Regionals'];
 	const StyledPaper = styled(Paper)`
 		height: 140px;
 		display: flex;
@@ -34,7 +34,7 @@ export const Menu = (): React.JSX.Element => {
 			{pages.map((page: string, index: number) => (
 				<Grid item md={3} xs={6} key={index}>
 					<StyledPaper elevation={3} sx={{ m: 5 }}>
-						<StyledLink to={formatMenuPage(page)}>
+						<StyledLink to={formatPageForRoute(page)}>
 							<Typography sx={{ typography: { md: 'h6', xs: 'subtitle1' } }} mx={1}>
 								{page}
 							</Typography>

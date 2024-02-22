@@ -53,7 +53,7 @@ export const getColumns = (abilitiesWithDescriptions: Ability[]): GridColDef[] =
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) => <img src={param.value} alt='' />
+			renderCell: (param) => <img src={param.value} alt='sprite' />
 		},
 		{
 			field: 'types',
@@ -307,7 +307,7 @@ export const capitalizeFirstLetter = (word: string): string => {
 	return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
-export const formatMenuPage = (page: string): string => {
+export const formatPageForRoute = (page: string): string => {
 	return page.replace(/\s/g, '').toLowerCase();
 };
 

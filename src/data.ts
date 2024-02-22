@@ -378,3 +378,19 @@ export const typeColors: Types = {
 	Steel: '#B8B8D0',
 	Fairy: '#EE99AC',
 };
+
+export const pages = [
+	'Gen 1',
+	'Gen 2',
+	'Gen 3',
+	'Gen 4',
+	'Gen 5',
+	'Gen 6',
+	'Gen 7',
+	'Gen 8',
+	'Gen 9',
+	'Megas',
+	'Fossils',
+	'Legendaries',
+	'Regionals'
+];
