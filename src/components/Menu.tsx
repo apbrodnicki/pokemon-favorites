@@ -1,6 +1,6 @@
 import { Grid, Paper, Typography, styled } from '@mui/material';
 import { pages } from 'data';
-import { formatPageForRoute } from 'helper';
+import { formatPageForRoute } from 'helper/helper';
 import React from 'react';
 import { Link } from 'react-router-dom';
 

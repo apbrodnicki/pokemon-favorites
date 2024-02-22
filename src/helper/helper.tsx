@@ -2,38 +2,10 @@ import { Box, LinearProgress, Typography } from '@mui/material';
 import { type GridColDef } from '@mui/x-data-grid';
 import { CustomTooltip } from 'components/custom/CustomTooltip';
 import { pokemonLists, typeColors } from 'data';
-import { type GenericAbilities, type GenericAbility, type GenericPokemon } from 'models/genericModels';
-import { type Ability, type Pokemon, type PokemonListsTemplate, type Stats, type Types } from 'models/models';
+import { type Ability, type PokemonListsTemplate, type Type, type Types } from 'models/models';
 import React from 'react';
 
-export const getSprite = (pokemon: GenericPokemon): string => {
-	return pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default; // choose gif over png
-};
-
-export const getAbilityDescription = (ability: GenericAbility): Ability => {
-	let description: string = '';
-	let updatedAbility: Ability = {};
-
-	if (ability.effect_entries.length > 0) {
-		for (const entry of ability.effect_entries) {
-			if (entry.language.name === 'en') {
-				description = entry.short_effect;
-				updatedAbility = { [ability.name]: description };
-			}
-		}
-	} else if (ability.flavor_text_entries.length > 0) {
-		for (const entry of ability.flavor_text_entries) {
-			if (entry.language.name === 'en') {
-				description = entry.flavor_text;
-				updatedAbility = { [ability.name]: description };
-			}
-		}
-	}
-
-	return updatedAbility;
-};
-
-export const getColumns = (abilitiesWithDescriptions: Ability[]): GridColDef[] => {
+export const getColumns = (abilitiesWithDescriptions: Ability[], types: Type[]): GridColDef[] => {
 	return [
 		{
 			field: 'name',
@@ -64,17 +36,31 @@ export const getColumns = (abilitiesWithDescriptions: Ability[]): GridColDef[] =
 			headerClassName: 'header',
 			align: 'center',
 			renderCell: (param) =>
-				param.value.map((type: keyof Types, index: number) => (
-					<Box
-						key={index}
-						sx={{
-							width: '40%',
-							backgroundColor: typeColors[type],
-						}}
-					>
-						<Typography my={1} align='center'>{type}</Typography>
-					</Box>
-				))
+				param.value.map((type: keyof Types, index: number) => {
+					let title = '';
+					for (const item of types) {
+						if (item.name === type) {
+							title = item.double_damage_from.join(',');
+						}
+					}
+					console.log(type);
+					console.log(types);
+					return (
+						<CustomTooltip
+							title={title}
+							key={index}
+						>
+							<Box
+								sx={{
+									width: '40%',
+									backgroundColor: typeColors[type],
+								}}
+							>
+								<Typography my={1} align='center'>{capitalizeFirstLetter(type)}</Typography>
+							</Box>
+						</CustomTooltip>
+					);
+				})
 		},
 		{
 			field: 'abilities',
@@ -241,58 +227,6 @@ export const getColumns = (abilitiesWithDescriptions: Ability[]): GridColDef[] =
 	];
 };
 
-export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
-	let name: string;
-	const types: string[] = [];
-	const abilities: string[] = [];
-	const stats: Stats = {
-		hp: 0,
-		attack: 0,
-		defense: 0,
-		'special-attack': 0,
-		'special-defense': 0,
-		speed: 0,
-	};
-
-	if (pokemon.name.includes('-mega')) {
-		const split = pokemon.name.split('-');
-		const capitalizedName = capitalizeFirstLetter(split[0]);
-		name = split.length === 2 ? 'Mega ' + capitalizedName : 'Mega ' + capitalizedName + ' ' + split[2].toUpperCase();
-	} else {
-		name = capitalizeFirstLetter(pokemon.name);
-	}
-
-	for (const type of pokemon.types) {
-		types.push(capitalizeFirstLetter(type.type.name));
-	}
-
-	for (const ability of pokemon.abilities) {
-		abilities.push(ability.ability.name);
-	}
-
-	for (const stat of pokemon.stats) {
-		stats[stat.stat.name] = stat.base_stat;
-	}
-
-	return {
-		name,
-		sprite: pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default, // choose gif over png
-		types,
-		abilities,
-		...stats,
-	};
-};
-
-export const filterPokemonAbilities = (abilities: GenericAbilities): string[] => {
-	const abilityArray: string[] = [];
-
-	for (const ability of abilities.results) {
-		abilityArray.push(ability.name);
-	}
-
-	return abilityArray;
-};
-
 export const formatAbilityName = (name: string): string => {
 	const updatedNameArray: string[] = [];
 
@@ -338,7 +272,7 @@ export const getPokemonList = (list: keyof PokemonListsTemplate): string[] => {
 	return pokemonLists[list];
 };
 
-export const reduceAbilitiesArray = (abilities: string[][]): string[] => {
+export const reduceArray = (abilities: string[][]): string[] => {
 	return abilities.reduce(
 		(accumulator, currentArray) => {
 			for (const currentAbility of currentArray) {

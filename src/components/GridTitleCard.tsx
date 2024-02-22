@@ -1,6 +1,6 @@
 import { Grid, MenuItem, Paper, TextField, styled, type SelectChangeEvent } from '@mui/material';
 import { pages } from 'data';
-import { formatPageForRoute } from 'helper';
+import { formatPageForRoute } from 'helper/helper';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 

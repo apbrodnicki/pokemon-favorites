@@ -1,5 +1,5 @@
 import { fetchPokemon } from 'api/fetchPokemon';
-import { filterPokemonData } from 'helper';
+import { filterPokemonData } from 'helper/filterApiData';
 import { type Pokemon } from 'models/models';
 import type React from 'react';
 import { useEffect, useState } from 'react';

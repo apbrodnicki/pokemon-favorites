@@ -14,25 +14,38 @@ export interface Stats {
 	speed: number,
 }
 
+export interface Type extends DamageRelation {
+	name: string,
+}
+
+export interface DamageRelation {
+	double_damage_from: string[],
+	double_damage_to: string[],
+	half_damage_from: string[],
+	half_damage_to: string[],
+	no_damage_from: string[],
+	no_damage_to: string[],
+}
+
 export interface Types {
-	Normal: string,
-	Fire: string,
-	Fighting: string,
-	Water: string,
-	Flying: string,
-	Grass: string,
-	Poison: string,
-	Electric: string,
-	Ground: string,
-	Psychic: string,
-	Rock: string,
-	Ice: string,
-	Bug: string,
-	Dragon: string,
-	Ghost: string,
-	Dark: string,
-	Steel: string,
-	Fairy: string,
+	normal: string,
+	fire: string,
+	fighting: string,
+	water: string,
+	flying: string,
+	grass: string,
+	poison: string,
+	electric: string,
+	ground: string,
+	psychic: string,
+	rock: string,
+	ice: string,
+	bug: string,
+	dragon: string,
+	ghost: string,
+	dark: string,
+	steel: string,
+	fairy: string,
 }
 
 export interface PokemonListsTemplate {

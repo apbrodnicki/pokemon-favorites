@@ -1,5 +1,5 @@
 import { fetchPokemon } from 'api/fetchPokemon';
-import { getSprite } from 'helper';
+import { getSprite } from 'helper/filterApiData';
 import { type GenericPokemon } from 'models/genericModels';
 import { useEffect, useState } from 'react';
 

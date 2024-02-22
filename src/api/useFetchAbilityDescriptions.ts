@@ -1,4 +1,4 @@
-import { getAbilityDescription } from 'helper';
+import { getAbilityDescription } from 'helper/filterApiData';
 import { type Ability } from 'models/models';
 import type React from 'react';
 import { useEffect, useState } from 'react';

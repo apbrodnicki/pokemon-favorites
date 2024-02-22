@@ -2,13 +2,15 @@ import { Box, Paper } from '@mui/material';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
 import { useFetchPokemon } from 'api/useFetchPokemon';
+import { useFetchTypes } from 'api/useFetchTypes';
 import loader from 'assets/loader.gif';
-import { getColumns, getPokemonList, reduceAbilitiesArray } from 'helper';
+import { getColumns, getPokemonList, reduceArray } from 'helper/helper';
 import { type Pokemon, type PokemonListsTemplate } from 'models/models';
 import React, { useState } from 'react';
 import { GridTitleCard } from './GridTitleCard';
 // pokeapi call on types, programmatically get double type stats, do it in helper
 // https://stackoverflow.com/questions/69952120/render-pokemon-double-type-weaknesses-resistances-in-react
+// convert models with - to camelcase, special-attack specialAttack
 interface PokemonDataGridProps {
 	list: keyof PokemonListsTemplate,
 	title: string,
@@ -17,15 +19,20 @@ interface PokemonDataGridProps {
 export const PokemonDataGrid = (props: PokemonDataGridProps): React.JSX.Element => {
 	const [isLoadingPokemon, setIsLoadingPokemon] = useState<boolean>(true);
 	const [isLoadingAbilityDescriptions, setIsLoadingAbilityDescriptions] = useState<boolean>(true);
-	const isLoading = isLoadingPokemon || isLoadingAbilityDescriptions;
-	const setIsLoadingFunctions = [setIsLoadingPokemon, setIsLoadingAbilityDescriptions];
+	const [isLoadingTypes, setIsLoadingTypes] = useState<boolean>(true);
+	const isLoading = isLoadingPokemon || isLoadingAbilityDescriptions || isLoadingTypes;
+	const setIsLoadingFunctions = [setIsLoadingPokemon, setIsLoadingAbilityDescriptions, setIsLoadingTypes];
 
 	const pokemonList = getPokemonList(props.list);
 	const pokemon = useFetchPokemon({ pokemonList, setIsLoadingPokemon });
-	const abilitiesList = pokemon.map(mon => mon.abilities);
-	const abilities = reduceAbilitiesArray(abilitiesList);
+
+	const abilities = reduceArray(pokemon.map(mon => mon.abilities));
 	const abilitiesWithDescriptions = useFetchAbilityDescriptions({ abilities, setIsLoadingAbilityDescriptions });
-	const columns: GridColDef[] = getColumns(abilitiesWithDescriptions);
+
+	const typesList = reduceArray(pokemon.map(mon => mon.types));
+	const types = useFetchTypes({ typesList, setIsLoadingTypes });
+
+	const columns: GridColDef[] = getColumns(abilitiesWithDescriptions, types);
 
 	return (
 		<>
