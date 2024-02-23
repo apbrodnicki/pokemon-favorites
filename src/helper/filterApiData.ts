@@ -1,5 +1,5 @@
 import { capitalizeFirstLetter } from 'helper/helper';
-import type { GenericAbility, GenericPokemon, GenericType } from 'models/genericModels';
+import type { GenericAbility, GenericDamageRelation, GenericPokemon, GenericType } from 'models/genericModels';
 import type { Ability, DamageRelation, Pokemon, Stats, Type } from 'models/models';
 
 export const getSprite = (pokemon: GenericPokemon): string => {
@@ -10,7 +10,7 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 	let name: string;
 	const types: string[] = [];
 	const abilities: string[] = [];
-	const stats: Stats = {
+	const stats = {
 		hp: 0,
 		attack: 0,
 		defense: 0,
@@ -39,12 +39,21 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 		stats[stat.stat.name] = stat.base_stat;
 	}
 
+	const convertedStats: Stats = {
+		hp: stats.hp,
+		attack: stats.attack,
+		defense: stats.defense,
+		specialAttack: stats['special-attack'],
+		specialDefense: stats['special-defense'],
+		speed: stats.speed,
+	};
+
 	return {
 		name,
 		sprite: pokemon.sprites.versions['generation-v']['black-white'].animated.front_default ?? pokemon.sprites.front_default, // choose gif over png
 		types,
 		abilities,
-		...stats,
+		...convertedStats,
 	};
 };
 
@@ -72,7 +81,7 @@ export const getAbilityDescription = (ability: GenericAbility): Ability => {
 };
 
 export const filterTypeData = (type: GenericType): Type => {
-	const damageRelation: DamageRelation = {
+	const damageRelation: GenericDamageRelation = {
 		double_damage_from: [],
 		double_damage_to: [],
 		half_damage_from: [],
@@ -82,13 +91,22 @@ export const filterTypeData = (type: GenericType): Type => {
 	};
 
 	for (const relation in type.damage_relations) {
-		for (const data of type.damage_relations[relation as keyof DamageRelation]) {
-			damageRelation[relation as keyof DamageRelation].push(data.name);
+		for (const data of type.damage_relations[relation as keyof GenericDamageRelation]) {
+			damageRelation[relation as keyof GenericDamageRelation].push(data.name);
 		}
 	}
 
+	const convertedDamageRelation: DamageRelation = {
+		doubleDamageFrom: damageRelation.double_damage_from,
+		doubleDamageTo: damageRelation.double_damage_to,
+		halfDamageFrom: damageRelation.half_damage_from,
+		halfDamageTo: damageRelation.half_damage_to,
+		noDamageFrom: damageRelation.no_damage_from,
+		noDamageTo: damageRelation.no_damage_to,
+	};
+
 	return {
 		name: type.name,
-		...damageRelation,
+		...convertedDamageRelation,
 	};
 };

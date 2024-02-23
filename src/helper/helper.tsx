@@ -40,14 +40,13 @@ export const getColumns = (abilitiesWithDescriptions: Ability[], types: Type[]):
 					let title = '';
 					for (const item of types) {
 						if (item.name === type) {
-							title = item.double_damage_from.join(',');
+							title = item.doubleDamageFrom.join(',');
 						}
 					}
-					console.log(type);
-					console.log(types);
 					return (
 						<CustomTooltip
 							title={title}
+							enterDelay={1000}
 							key={index}
 						>
 							<Box
@@ -77,8 +76,8 @@ export const getColumns = (abilitiesWithDescriptions: Ability[], types: Type[]):
 
 						return (
 							<CustomTooltip
-								key={index}
 								title={(title != null) ? title[ability] : ''}
+								key={index}
 							>
 								<Typography my={1} align='center'>{formatAbilityName(ability)}</Typography>
 							</CustomTooltip>
@@ -156,7 +155,7 @@ export const getColumns = (abilitiesWithDescriptions: Ability[], types: Type[]):
 				</Box>
 		},
 		{
-			field: 'special-attack',
+			field: 'specialAttack',
 			headerName: 'Special Attack',
 			type: 'number',
 			width: 164,
@@ -179,7 +178,7 @@ export const getColumns = (abilitiesWithDescriptions: Ability[], types: Type[]):
 				</Box>
 		},
 		{
-			field: 'special-defense',
+			field: 'specialDefense',
 			headerName: 'Special Defense',
 			type: 'number',
 			width: 164,
