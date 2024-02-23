@@ -27,10 +27,6 @@ export const GridTitleCard = (props: GridTitleCardProps): React.JSX.Element => {
 		}
 	};
 
-	const handleHomeClick = (): void => {
-		navigate('/');
-	};
-
 	const StyledPaper = styled(Paper)`
 		display: flex;
 		align-items: center;
@@ -50,7 +46,7 @@ export const GridTitleCard = (props: GridTitleCardProps): React.JSX.Element => {
 						label={props.title}
 						fullWidth
 					>
-						<MenuItem value='' onClick={() => { handleHomeClick(); }} sx={{ justifyContent: 'center' }}>Home</MenuItem>
+						<MenuItem value='' onClick={() => { navigate('/'); }} sx={{ justifyContent: 'center' }}>Home</MenuItem>
 						{pages.map((page: string, index: number) => (
 							<MenuItem value={formatPageForRoute(page)} key={index} sx={{ justifyContent: 'center' }}>{page}</MenuItem>
 						))}

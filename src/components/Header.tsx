@@ -22,7 +22,7 @@ export const Header = (): React.JSX.Element => {
 						mx={2}
 					/>
 				</CustomTooltip>
-				<CustomTooltip title='	Home Page'>
+				<CustomTooltip title='Home Page'>
 					<Link to="/" style={{ textDecoration: 'none' }}>
 						<Typography
 							color='black'

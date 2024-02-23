@@ -10,7 +10,6 @@ import React, { useState } from 'react';
 import { GridTitleCard } from './GridTitleCard';
 // pokeapi call on types, programmatically get double type stats, do it in helper
 // https://stackoverflow.com/questions/69952120/render-pokemon-double-type-weaknesses-resistances-in-react
-// convert models with - to camelcase, special-attack specialAttack
 interface PokemonDataGridProps {
 	list: keyof PokemonListsTemplate,
 	title: string,
