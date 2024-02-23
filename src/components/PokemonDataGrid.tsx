@@ -4,7 +4,8 @@ import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
 import { useFetchPokemon } from 'api/useFetchPokemon';
 import { useFetchTypes } from 'api/useFetchTypes';
 import loader from 'assets/loader.gif';
-import { getColumns, getPokemonList, reduceArray } from 'helper/helper';
+import { getDataGridColumns } from 'helper/getDataGridColumns';
+import { getPokemonList, reduceArray } from 'helper/helper';
 import { type Pokemon, type PokemonListsTemplate } from 'models/models';
 import React, { useState } from 'react';
 import { GridTitleCard } from './GridTitleCard';
@@ -31,7 +32,7 @@ export const PokemonDataGrid = (props: PokemonDataGridProps): React.JSX.Element 
 	const typesList = reduceArray(pokemon.map(mon => mon.types));
 	const types = useFetchTypes({ typesList, setIsLoadingTypes });
 
-	const columns: GridColDef[] = getColumns(abilitiesWithDescriptions, types);
+	const columns: GridColDef[] = getDataGridColumns(abilitiesWithDescriptions, types);
 
 	return (
 		<>
