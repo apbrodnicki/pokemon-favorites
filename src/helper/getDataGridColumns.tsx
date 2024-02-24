@@ -1,10 +1,10 @@
-import { Box, LinearProgress, Paper, Popover, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import type { GridColDef } from '@mui/x-data-grid';
-import { CustomTooltip } from 'components/custom/CustomTooltip';
-import { typeColors } from 'data';
-import type { Ability, Type, Types } from 'models/models';
-import React, { useState } from 'react';
-import { capitalizeFirstLetter, formatAbilityName, getProgressColor } from './helper';
+import { AbilitiesCell } from 'components/cells/AbilitiesCell';
+import { StatCell } from 'components/cells/StatCell';
+import { TypesCell } from 'components/cells/TypesCell';
+import type { Ability, Type } from 'models/models';
+import React from 'react';
 
 export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: Type[]): GridColDef[] => {
 	return [
@@ -16,7 +16,7 @@ export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: 
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) => <Typography>{param.value}</Typography>,
+			renderCell: (param) => <Typography>{param.value}</Typography>
 		},
 		{
 			field: 'sprite',
@@ -36,103 +36,7 @@ export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: 
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) => {
-				const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-				const open = Boolean(anchorEl);
-
-				const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>): void => {
-					setAnchorEl(event.currentTarget);
-				};
-
-				const handlePopoverClose = (): void => {
-					setAnchorEl(null);
-				};
-
-				if (param.value.length > 1) {
-					return param.value.map((type: keyof Types, index: number) => {
-						console.log('here', param);
-						console.log('2', types);
-						let title = '';
-						for (const item of types) {
-							if (item.name === type) {
-								title = item.doubleDamageFrom.join(',');
-							}
-						}
-						console.log({ title });
-						return (
-							<>
-								<Popover
-									sx={{
-										pointerEvents: 'none',
-									}}
-									open={open}
-									anchorEl={anchorEl}
-									anchorOrigin={{
-										vertical: 'top',
-										horizontal: 'center',
-									}}
-									transformOrigin={{
-										vertical: 'bottom',
-										horizontal: 'center',
-									}}
-									onClose={handlePopoverClose}
-								>
-									<Paper elevation={5} sx={{ height: '200px', width: '200px', p: 3 }}>
-											HELLO
-									</Paper>
-								</Popover>
-								<Box
-									sx={{
-										width: '40%',
-										backgroundColor: typeColors[type],
-									}}
-									onMouseEnter={handlePopoverOpen}
-									onMouseLeave={handlePopoverClose}
-									key={index}
-								>
-									<Typography my={1} align='center'>{capitalizeFirstLetter(type)}</Typography>
-								</Box>
-							</>
-						);
-					});
-				} else {
-					const type = param.value[0] as keyof Types;
-					return (
-						<>
-							<Popover
-								sx={{
-									pointerEvents: 'none',
-								}}
-								open={open}
-								anchorEl={anchorEl}
-								anchorOrigin={{
-									vertical: 'top',
-									horizontal: 'center',
-								}}
-								transformOrigin={{
-									vertical: 'bottom',
-									horizontal: 'center',
-								}}
-								onClose={handlePopoverClose}
-							>
-								<Paper elevation={5} sx={{ height: '200px', width: '200px', p: 3 }}>
-											HELLO ONE TYPE
-								</Paper>
-							</Popover>
-							<Box
-								sx={{
-									width: '40%',
-									backgroundColor: typeColors[type],
-								}}
-								onMouseEnter={handlePopoverOpen}
-								onMouseLeave={handlePopoverClose}
-							>
-								<Typography my={1} align='center'>{capitalizeFirstLetter(type)}</Typography>
-							</Box>
-						</>
-					);
-				}
-			}
+			renderCell: (param) => <TypesCell typeStrings={param.value} types={types} />
 		},
 		{
 			field: 'abilities',
@@ -142,21 +46,7 @@ export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: 
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) =>
-				<Box>
-					{param.value.map((ability: string, index: number) => {
-						const title = abilitiesWithDescriptions.find(currentAbility => Object.keys(currentAbility).includes(ability));
-
-						return (
-							<CustomTooltip
-								title={(title != null) ? title[ability] : ''}
-								key={index}
-							>
-								<Typography my={1} align='center'>{formatAbilityName(ability)}</Typography>
-							</CustomTooltip>
-						);
-					})}
-				</Box>
+			renderCell: (param) => <AbilitiesCell abilityStrings={param.value} abilities={abilitiesWithDescriptions} />
 		},
 		{
 			field: 'hp',
@@ -166,20 +56,7 @@ export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: 
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) =>
-				<Box width='100%'>
-					<Typography my={1} textAlign='center'>{param.value}</Typography>
-					<LinearProgress
-						variant='determinate'
-						value={param.value / 255 * 100}
-						sx={{
-							height: 30,
-							'& .MuiLinearProgress-bar1Determinate': {
-								backgroundColor: getProgressColor(param.value / 255 * 100)
-							}
-						}}
-					/>
-				</Box>
+			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
 			field: 'attack',
@@ -189,20 +66,7 @@ export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: 
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) =>
-				<Box width='100%'>
-					<Typography my={1} textAlign='center'>{param.value}</Typography>
-					<LinearProgress
-						variant='determinate'
-						value={param.value / 255 * 100}
-						sx={{
-							height: 30,
-							'& .MuiLinearProgress-bar1Determinate': {
-								backgroundColor: getProgressColor(param.value / 255 * 100)
-							}
-						}}
-					/>
-				</Box>
+			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
 			field: 'defense',
@@ -212,20 +76,7 @@ export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: 
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) =>
-				<Box width='100%'>
-					<Typography my={1} textAlign='center'>{param.value}</Typography>
-					<LinearProgress
-						variant='determinate'
-						value={param.value / 255 * 100}
-						sx={{
-							height: 30,
-							'& .MuiLinearProgress-bar1Determinate': {
-								backgroundColor: getProgressColor(param.value / 255 * 100)
-							}
-						}}
-					/>
-				</Box>
+			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
 			field: 'specialAttack',
@@ -235,20 +86,7 @@ export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: 
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) =>
-				<Box width='100%'>
-					<Typography my={1} textAlign='center'>{param.value}</Typography>
-					<LinearProgress
-						variant='determinate'
-						value={param.value / 255 * 100}
-						sx={{
-							height: 30,
-							'& .MuiLinearProgress-bar1Determinate': {
-								backgroundColor: getProgressColor(param.value / 255 * 100)
-							}
-						}}
-					/>
-				</Box>
+			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
 			field: 'specialDefense',
@@ -258,20 +96,7 @@ export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: 
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) =>
-				<Box width='100%'>
-					<Typography my={1} textAlign='center'>{param.value}</Typography>
-					<LinearProgress
-						variant='determinate'
-						value={param.value / 255 * 100}
-						sx={{
-							height: 30,
-							'& .MuiLinearProgress-bar1Determinate': {
-								backgroundColor: getProgressColor(param.value / 255 * 100)
-							}
-						}}
-					/>
-				</Box>
+			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 		{
 			field: 'speed',
@@ -281,20 +106,7 @@ export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: 
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) =>
-				<Box width='100%'>
-					<Typography my={1} textAlign='center'>{param.value}</Typography>
-					<LinearProgress
-						variant='determinate'
-						value={param.value / 255 * 100}
-						sx={{
-							height: 30,
-							'& .MuiLinearProgress-bar1Determinate': {
-								backgroundColor: getProgressColor(param.value / 255 * 100)
-							}
-						}}
-					/>
-				</Box>
+			renderCell: (param) => <StatCell statValue={param.value} />
 		},
 	];
 };
