@@ -22,44 +22,71 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 	};
 
 	if (props.typeStrings.length > 1) {
+		const typeBoxes = props.typeStrings.map((typeName: keyof Types, index: number) => (
+			<Box
+				sx={{
+					width: '40%',
+					backgroundColor: typeColors[typeName],
+				}}
+				key={index}
+			>
+				<Typography my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
+			</Box>
+		));
+
 		return (
 			<>
-				{props.typeStrings.map((typeName: keyof Types, index: number) => (
-					<Box
-						sx={{
-							width: '40%',
-							backgroundColor: typeColors[typeName],
-						}}
-						key={index}
-					>
-						<Popover
-							sx={{
-								pointerEvents: 'none',
-							}}
-							open={open}
-							anchorEl={anchorEl}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'center',
-							}}
-							transformOrigin={{
-								vertical: 'bottom',
-								horizontal: 'center',
-							}}
-							onClose={handlePopoverClose}
-						>
-							<Paper elevation={5} sx={{ height: '200px', width: '200px', p: 3 }}>
-								HELLO
-							</Paper>
-						</Popover>
-						<Box
-							onMouseEnter={handlePopoverOpen}
-							onMouseLeave={handlePopoverClose}
-						>
-							<Typography my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
+				<Popover
+					sx={{
+						pointerEvents: 'none',
+					}}
+					open={open}
+					anchorEl={anchorEl}
+					anchorOrigin={{
+						vertical: 'top',
+						horizontal: 'center',
+					}}
+					transformOrigin={{
+						vertical: 'bottom',
+						horizontal: 'center',
+					}}
+					onClose={handlePopoverClose}
+				>
+					<Paper elevation={5} sx={{ height: '200px', width: '200px', p: 3 }}>
+						Defense
+						<Box>
+							Immune:
 						</Box>
-					</Box>
-				))}
+						<Box>
+							Resist:
+						</Box>
+						<Box>
+							Weak to:
+						</Box>
+						Offense (Stab):
+						<Box>
+							Immune:
+						</Box>
+						<Box>
+							Not very effective:
+						</Box>
+						<Box>
+							Super effective:
+						</Box>
+					</Paper>
+				</Popover>
+				<Box
+					sx={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						width: '100%',
+					}}
+					onMouseEnter={handlePopoverOpen}
+					onMouseLeave={handlePopoverClose}
+				>
+					{typeBoxes}
+				</Box>
 			</>
 		);
 	} else {
