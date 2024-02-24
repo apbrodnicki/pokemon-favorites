@@ -1,8 +1,10 @@
-import { Box, Paper, Popover, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { typeColors } from 'data';
 import { capitalizeFirstLetter } from 'helper/helper';
+import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
+import HoverPopover from 'material-ui-popup-state/HoverPopover';
 import type { DamageRelation, Type, Types } from 'models/models';
-import React, { useState } from 'react';
+import React from 'react';
 
 interface TypesCellProps {
 	typeStrings: Array<keyof Types>,
@@ -10,17 +12,6 @@ interface TypesCellProps {
 }
 
 export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
-	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-	const open = Boolean(anchorEl);
-
-	const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>): void => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const handlePopoverClose = (): void => {
-		setAnchorEl(null);
-	};
-
 	if (props.typeStrings.length > 1) {
 		const typeBoxes = props.typeStrings.map((typeName: keyof Types, index: number) => (
 			<Box
@@ -69,6 +60,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 		}
 
 		const neutralTypes = damageRelation.doubleDamageFrom.filter((type) => damageRelation.halfDamageFrom.includes(type));
+
 		for (const neutralType of neutralTypes) {
 			damageRelation.doubleDamageFrom = damageRelation.doubleDamageFrom.filter((type) => type !== neutralType);
 			damageRelation.halfDamageFrom = damageRelation.halfDamageFrom.filter((type) => type !== neutralType);
@@ -90,54 +82,52 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 		}
 
 		return (
-			<>
-				<Popover
-					sx={{
-						pointerEvents: 'none',
-					}}
-					open={open}
-					anchorEl={anchorEl}
-					anchorOrigin={{
-						vertical: 'top',
-						horizontal: 'center',
-					}}
-					transformOrigin={{
-						vertical: 'bottom',
-						horizontal: 'center',
-					}}
-					onClose={handlePopoverClose}
-				>
-					<Paper elevation={5} sx={{ height: '200px', width: '200px', p: 3 }}>
-						<Box>
-							Very weak to: {damageRelation.quadrupleDamageFrom}
+			<PopupState variant="popover" popupId="doubleTypesPopup">
+				{(popupState) => (
+					<>
+						<HoverPopover
+							{...bindPopover(popupState)}
+							anchorOrigin={{
+								vertical: 'top',
+								horizontal: 'center',
+							}}
+							transformOrigin={{
+								vertical: 'bottom',
+								horizontal: 'center',
+							}}
+						>
+							<Paper elevation={5} sx={{ height: '200px', width: '200px', p: 3 }}>
+								<Box>
+							Very weak to: {damageRelation.quadrupleDamageFrom?.join(', ')}
+								</Box>
+								<Box>
+							Weak to: {damageRelation.doubleDamageFrom.join(', ')}
+								</Box>
+								<Box>
+							Resists: {damageRelation.halfDamageFrom.join(', ')}
+								</Box>
+								<Box>
+							Strongly resists: {damageRelation.quarterDamageFrom?.join(', ')}
+								</Box>
+								<Box>
+							Immune: {damageRelation.noDamageFrom.join(', ')}
+								</Box>
+							</Paper>
+						</HoverPopover>
+						<Box
+							{...bindHover(popupState)}
+							sx={{
+								display: 'flex',
+								justifyContent: 'center',
+								alignItems: 'center',
+								width: '100%',
+							}}
+						>
+							{typeBoxes}
 						</Box>
-						<Box>
-							Weak to: {damageRelation.doubleDamageFrom}
-						</Box>
-						<Box>
-							Resists: {damageRelation.halfDamageFrom}
-						</Box>
-						<Box>
-							Strongly resists: {damageRelation.quarterDamageFrom}
-						</Box>
-						<Box>
-							Immune: {damageRelation.noDamageFrom}
-						</Box>
-					</Paper>
-				</Popover>
-				<Box
-					sx={{
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'center',
-						width: '100%',
-					}}
-					onMouseEnter={handlePopoverOpen}
-					onMouseLeave={handlePopoverClose}
-				>
-					{typeBoxes}
-				</Box>
-			</>
+					</>
+				)}
+			</PopupState>
 		);
 	} else {
 		const typeName = props.typeStrings[0] as keyof Types;
@@ -154,46 +144,44 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 		}
 
 		return (
-			<>
-				<Popover
-					sx={{
-						pointerEvents: 'none',
-					}}
-					open={open}
-					anchorEl={anchorEl}
-					anchorOrigin={{
-						vertical: 'top',
-						horizontal: 'center',
-					}}
-					transformOrigin={{
-						vertical: 'bottom',
-						horizontal: 'center',
-					}}
-					onClose={handlePopoverClose}
-				>
-					<Paper elevation={5} sx={{ height: '200px', width: '250px', p: 3 }}>
-						<Box>
-							Weak to: {damageRelation.doubleDamageFrom}
+			<PopupState variant="popover" popupId="singleTypePopup">
+				{(popupState) => (
+					<>
+						<HoverPopover
+							{...bindPopover(popupState)}
+							anchorOrigin={{
+								vertical: 'top',
+								horizontal: 'center',
+							}}
+							transformOrigin={{
+								vertical: 'bottom',
+								horizontal: 'center',
+							}}
+						>
+							<Paper elevation={5} sx={{ height: '200px', width: '250px', p: 3 }}>
+								<Box>
+							Weak to: {damageRelation.doubleDamageFrom.join(', ')}
+								</Box>
+								<Box>
+							Resists: {damageRelation.halfDamageFrom.join(', ')}
+								</Box>
+								<Box>
+							Immune: {damageRelation.noDamageFrom.join(', ')}
+								</Box>
+							</Paper>
+						</HoverPopover>
+						<Box
+							{...bindHover(popupState)}
+							sx={{
+								width: '40%',
+								backgroundColor: typeColors[typeName],
+							}}
+						>
+							<Typography my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
 						</Box>
-						<Box>
-							Resists: {damageRelation.halfDamageFrom}
-						</Box>
-						<Box>
-							Immune: {damageRelation.noDamageFrom}
-						</Box>
-					</Paper>
-				</Popover>
-				<Box
-					sx={{
-						width: '40%',
-						backgroundColor: typeColors[typeName],
-					}}
-					onMouseEnter={handlePopoverOpen}
-					onMouseLeave={handlePopoverClose}
-				>
-					<Typography my={1} align='center'>{capitalizeFirstLetter(typeName)}</Typography>
-				</Box>
-			</>
+					</>
+				)}
+			</PopupState>
 		);
 	}
 };
