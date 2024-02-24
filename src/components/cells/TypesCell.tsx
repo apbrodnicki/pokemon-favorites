@@ -1,7 +1,7 @@
 import { Box, Paper, Popover, Typography } from '@mui/material';
 import { typeColors } from 'data';
 import { capitalizeFirstLetter } from 'helper/helper';
-import type { Type, Types } from 'models/models';
+import type { DamageRelation, Type, Types } from 'models/models';
 import React, { useState } from 'react';
 
 interface TypesCellProps {
@@ -34,6 +34,40 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 			</Box>
 		));
 
+		const type: DamageRelation = {
+			quadrupleDamageFrom: [],
+			doubleDamageFrom: [],
+			halfDamageFrom: [],
+			quarterDamageFrom: [],
+			noDamageFrom: [],
+		};
+
+		for (const typeName of props.typeStrings) {
+			for (const item of props.types) {
+				if (item.name === typeName) {
+					for (const currentType of item.doubleDamageFrom) {
+						if (!type.doubleDamageFrom.includes(currentType)) {
+							type.doubleDamageFrom.push(currentType);
+						} else {
+							type.doubleDamageFrom = type.doubleDamageFrom.filter((type) => type !== currentType);
+							type.quadrupleDamageFrom !== undefined ? type.quadrupleDamageFrom.push(currentType) : type.quadrupleDamageFrom = [];
+						}
+					}
+
+					for (const currentType of item.halfDamageFrom) {
+						if (!type.halfDamageFrom.includes(currentType)) {
+							type.halfDamageFrom.push(currentType);
+						} else {
+							type.halfDamageFrom = type.halfDamageFrom.filter((type) => type !== currentType);
+							type.quarterDamageFrom !== undefined ? type.quarterDamageFrom.push(currentType) : type.quarterDamageFrom = [];
+						}
+					}
+
+					type.noDamageFrom = item.noDamageFrom;
+				}
+			}
+		}
+		console.log({ type });
 		return (
 			<>
 				<Popover
@@ -53,25 +87,20 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 					onClose={handlePopoverClose}
 				>
 					<Paper elevation={5} sx={{ height: '200px', width: '200px', p: 3 }}>
-						Defense
 						<Box>
-							Immune:
-						</Box>
-						<Box>
-							Resist:
+							Very weak to:
 						</Box>
 						<Box>
 							Weak to:
 						</Box>
-						Offense (Stab):
+						<Box>
+							Resists:
+						</Box>
+						<Box>
+							Strongly resists:
+						</Box>
 						<Box>
 							Immune:
-						</Box>
-						<Box>
-							Not very effective:
-						</Box>
-						<Box>
-							Super effective:
 						</Box>
 					</Paper>
 				</Popover>
@@ -91,14 +120,10 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 		);
 	} else {
 		const typeName = props.typeStrings[0] as keyof Types;
-		let type: Type = {
-			name: '',
+		let type: DamageRelation = {
 			doubleDamageFrom: [],
-			doubleDamageTo: [],
 			halfDamageFrom: [],
-			halfDamageTo: [],
 			noDamageFrom: [],
-			noDamageTo: [],
 		};
 
 		for (const item of props.types) {
@@ -126,25 +151,14 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 					onClose={handlePopoverClose}
 				>
 					<Paper elevation={5} sx={{ height: '200px', width: '250px', p: 3 }}>
-						Defense
-						<Box>
-							Immune: {type.noDamageFrom}
-						</Box>
-						<Box>
-							Resist: {type.halfDamageFrom}
-						</Box>
 						<Box>
 							Weak to: {type.doubleDamageFrom}
 						</Box>
-						Offense (Stab: {type.name})
 						<Box>
-							Immune: {type.noDamageTo}
+							Resists: {type.halfDamageFrom}
 						</Box>
 						<Box>
-							Not very effective: {type.halfDamageTo}
-						</Box>
-						<Box>
-							Super effective: {type.doubleDamageTo}
+							Immune: {type.noDamageFrom}
 						</Box>
 					</Paper>
 				</Popover>

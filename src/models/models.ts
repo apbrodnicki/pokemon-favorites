@@ -19,12 +19,11 @@ export interface Type extends DamageRelation {
 }
 
 export interface DamageRelation {
+	quadrupleDamageFrom?: string[],
 	doubleDamageFrom: string[],
-	doubleDamageTo: string[],
 	halfDamageFrom: string[],
-	halfDamageTo: string[],
+	quarterDamageFrom?: string[],
 	noDamageFrom: string[],
-	noDamageTo: string[],
 }
 
 export interface Types {
