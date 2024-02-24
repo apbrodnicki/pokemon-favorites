@@ -100,9 +100,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								elevation={5}
 								sx={{
 									backgroundColor: '#B8D8D8',
-									height: '375px',
-									width: '350px',
-									p: 3
+									p: 3,
 								}}
 							>
 								{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
@@ -112,8 +110,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 										</Typography>
 										<Grid container>
 											{damageRelation.quadrupleDamageFrom?.map((type: string, index: number) => (
-												<Grid item xs={3} key={index}>
-													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+												<Grid
+													item
+													xs={3}
+													display='flex'
+													alignItems='center'
+													justifyContent='center'
+													sx={{
+														m: .5,
+														backgroundColor: typeColors[type as keyof Types]
+													}}
+													key={index}
+												>
+													<Typography align='center' p={2}>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -128,8 +137,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 										</Typography>
 										<Grid container>
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
-												<Grid item xs={3} key={index}>
-													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+												<Grid
+													item
+													xs={3}
+													display='flex'
+													alignItems='center'
+													justifyContent='center'
+													sx={{
+														m: .5,
+														backgroundColor: typeColors[type as keyof Types]
+													}}
+													key={index}
+												>
+													<Typography align='center' p={2}>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -144,8 +164,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 										</Typography>
 										<Grid container>
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
-												<Grid item xs={3} key={index}>
-													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+												<Grid
+													item
+													xs={3}
+													display='flex'
+													alignItems='center'
+													justifyContent='center'
+													sx={{
+														m: .5,
+														backgroundColor: typeColors[type as keyof Types]
+													}}
+													key={index}
+												>
+													<Typography align='center' p={2}>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -160,8 +191,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 										</Typography>
 										<Grid container>
 											{damageRelation.quarterDamageFrom?.map((type: string, index: number) => (
-												<Grid item xs={3} key={index}>
-													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+												<Grid
+													item
+													xs={3}
+													display='flex'
+													alignItems='center'
+													justifyContent='center'
+													sx={{
+														m: .5,
+														backgroundColor: typeColors[type as keyof Types]
+													}}
+													key={index}
+												>
+													<Typography align='center' p={2}>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -176,8 +218,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 										</Typography>
 										<Grid container>
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
-												<Grid item xs={3} key={index}>
-													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+												<Grid
+													item
+													xs={3}
+													display='flex'
+													alignItems='center'
+													justifyContent='center'
+													sx={{
+														m: .5,
+														backgroundColor: typeColors[type as keyof Types]
+													}}
+													key={index}
+												>
+													<Typography align='center' p={2}>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -235,8 +288,6 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								elevation={5}
 								sx={{
 									backgroundColor: '#B8D8D8',
-									height: '300px',
-									width: '300px',
 									p: 3
 								}}
 							>
@@ -247,8 +298,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 										</Typography>
 										<Grid container>
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
-												<Grid item xs={3} key={index}>
-													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+												<Grid
+													item
+													xs={3}
+													display='flex'
+													alignItems='center'
+													justifyContent='center'
+													sx={{
+														m: .5,
+														backgroundColor: typeColors[type as keyof Types]
+													}}
+													key={index}
+												>
+													<Typography align='center' p={2}>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -263,8 +325,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 										</Typography>
 										<Grid container>
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
-												<Grid item xs={3} key={index}>
-													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+												<Grid
+													item
+													xs={3}
+													display='flex'
+													alignItems='center'
+													justifyContent='center'
+													sx={{
+														m: .5,
+														backgroundColor: typeColors[type as keyof Types]
+													}}
+													key={index}
+												>
+													<Typography align='center' p={2}>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -279,8 +352,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 										</Typography>
 										<Grid container>
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
-												<Grid item xs={3} key={index}>
-													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+												<Grid
+													item
+													xs={3}
+													display='flex'
+													alignItems='center'
+													justifyContent='center'
+													sx={{
+														m: .5,
+														backgroundColor: typeColors[type as keyof Types]
+													}}
+													key={index}
+												>
+													<Typography align='center' p={2}>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
