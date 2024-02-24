@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Grid, Paper, Typography } from '@mui/material';
 import { typeColors } from 'data';
 import { capitalizeFirstLetter } from 'helper/helper';
 import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
@@ -96,22 +96,95 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								horizontal: 'center',
 							}}
 						>
-							<Paper elevation={5} sx={{ height: '200px', width: '200px', p: 3 }}>
-								<Box>
-							Very weak to: {damageRelation.quadrupleDamageFrom?.join(', ')}
-								</Box>
-								<Box>
-							Weak to: {damageRelation.doubleDamageFrom.join(', ')}
-								</Box>
-								<Box>
-							Resists: {damageRelation.halfDamageFrom.join(', ')}
-								</Box>
-								<Box>
-							Strongly resists: {damageRelation.quarterDamageFrom?.join(', ')}
-								</Box>
-								<Box>
-							Immune: {damageRelation.noDamageFrom.join(', ')}
-								</Box>
+							<Paper
+								elevation={5}
+								sx={{
+									backgroundColor: '#B8D8D8',
+									height: '375px',
+									width: '350px',
+									p: 3
+								}}
+							>
+								{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
+									<>
+										<Typography>
+											Very weak to (4x):
+										</Typography>
+										<Grid container>
+											{damageRelation.quadrupleDamageFrom?.map((type: string, index: number) => (
+												<Grid item xs={3} key={index}>
+													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+														{capitalizeFirstLetter(type)}
+													</Typography>
+												</Grid>
+											))}
+										</Grid>
+									</>
+								)}
+								{damageRelation.doubleDamageFrom.length > 0 && (
+									<>
+										<Typography>
+											Weak to (2x):
+										</Typography>
+										<Grid container>
+											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
+												<Grid item xs={3} key={index}>
+													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+														{capitalizeFirstLetter(type)}
+													</Typography>
+												</Grid>
+											))}
+										</Grid>
+									</>
+								)}
+								{damageRelation.halfDamageFrom.length > 0 && (
+									<>
+										<Typography>
+											Resists (.5x):
+										</Typography>
+										<Grid container>
+											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
+												<Grid item xs={3} key={index}>
+													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+														{capitalizeFirstLetter(type)}
+													</Typography>
+												</Grid>
+											))}
+										</Grid>
+									</>
+								)}
+								{damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.length > 0 && (
+									<>
+										<Typography>
+											Strongly resists (.25x):
+										</Typography>
+										<Grid container>
+											{damageRelation.quarterDamageFrom?.map((type: string, index: number) => (
+												<Grid item xs={3} key={index}>
+													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+														{capitalizeFirstLetter(type)}
+													</Typography>
+												</Grid>
+											))}
+										</Grid>
+									</>
+								)}
+								{damageRelation.noDamageFrom.length > 0 && (
+									<>
+										<Typography>
+											Immune to (0x):
+										</Typography>
+										<Grid container>
+											{damageRelation.noDamageFrom.map((type: string, index: number) => (
+												<Grid item xs={3} key={index}>
+													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+														{capitalizeFirstLetter(type)}
+													</Typography>
+												</Grid>
+											))}
+										</Grid>
+									</>
+								)}
 							</Paper>
 						</HoverPopover>
 						<Box
@@ -158,16 +231,63 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								horizontal: 'center',
 							}}
 						>
-							<Paper elevation={5} sx={{ height: '200px', width: '250px', p: 3 }}>
-								<Box>
-							Weak to: {damageRelation.doubleDamageFrom.join(', ')}
-								</Box>
-								<Box>
-							Resists: {damageRelation.halfDamageFrom.join(', ')}
-								</Box>
-								<Box>
-							Immune: {damageRelation.noDamageFrom.join(', ')}
-								</Box>
+							<Paper
+								elevation={5}
+								sx={{
+									backgroundColor: '#B8D8D8',
+									height: '300px',
+									width: '300px',
+									p: 3
+								}}
+							>
+								{damageRelation.doubleDamageFrom.length > 0 && (
+									<>
+										<Typography>
+											Weak to (2x):
+										</Typography>
+										<Grid container>
+											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
+												<Grid item xs={3} key={index}>
+													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+														{capitalizeFirstLetter(type)}
+													</Typography>
+												</Grid>
+											))}
+										</Grid>
+									</>
+								)}
+								{damageRelation.halfDamageFrom.length > 0 && (
+									<>
+										<Typography>
+											Resists (.5x):
+										</Typography>
+										<Grid container>
+											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
+												<Grid item xs={3} key={index}>
+													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+														{capitalizeFirstLetter(type)}
+													</Typography>
+												</Grid>
+											))}
+										</Grid>
+									</>
+								)}
+								{damageRelation.noDamageFrom.length > 0 && (
+									<>
+										<Typography>
+											Immune to (0x):
+										</Typography>
+										<Grid container>
+											{damageRelation.noDamageFrom.map((type: string, index: number) => (
+												<Grid item xs={3} key={index}>
+													<Typography align='center' m={.5} p={.5} sx={{ backgroundColor: typeColors[type as keyof Types] }}>
+														{capitalizeFirstLetter(type)}
+													</Typography>
+												</Grid>
+											))}
+										</Grid>
+									</>
+								)}
 							</Paper>
 						</HoverPopover>
 						<Box
