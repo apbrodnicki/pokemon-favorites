@@ -34,7 +34,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 			</Box>
 		));
 
-		const type: DamageRelation = {
+		const damageRelation: DamageRelation = {
 			quadrupleDamageFrom: [],
 			doubleDamageFrom: [],
 			halfDamageFrom: [],
@@ -46,28 +46,49 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 			for (const item of props.types) {
 				if (item.name === typeName) {
 					for (const currentType of item.doubleDamageFrom) {
-						if (!type.doubleDamageFrom.includes(currentType)) {
-							type.doubleDamageFrom.push(currentType);
+						if (!damageRelation.doubleDamageFrom.includes(currentType)) {
+							damageRelation.doubleDamageFrom.push(currentType);
 						} else {
-							type.doubleDamageFrom = type.doubleDamageFrom.filter((type) => type !== currentType);
-							type.quadrupleDamageFrom !== undefined ? type.quadrupleDamageFrom.push(currentType) : type.quadrupleDamageFrom = [];
+							damageRelation.doubleDamageFrom = damageRelation.doubleDamageFrom.filter((type) => type !== currentType);
+							damageRelation.quadrupleDamageFrom !== undefined ? damageRelation.quadrupleDamageFrom.push(currentType) : damageRelation.quadrupleDamageFrom = [];
 						}
 					}
 
 					for (const currentType of item.halfDamageFrom) {
-						if (!type.halfDamageFrom.includes(currentType)) {
-							type.halfDamageFrom.push(currentType);
+						if (!damageRelation.halfDamageFrom.includes(currentType)) {
+							damageRelation.halfDamageFrom.push(currentType);
 						} else {
-							type.halfDamageFrom = type.halfDamageFrom.filter((type) => type !== currentType);
-							type.quarterDamageFrom !== undefined ? type.quarterDamageFrom.push(currentType) : type.quarterDamageFrom = [];
+							damageRelation.halfDamageFrom = damageRelation.halfDamageFrom.filter((type) => type !== currentType);
+							damageRelation.quarterDamageFrom !== undefined ? damageRelation.quarterDamageFrom.push(currentType) : damageRelation.quarterDamageFrom = [];
 						}
 					}
 
-					type.noDamageFrom = item.noDamageFrom;
+					damageRelation.noDamageFrom = item.noDamageFrom;
 				}
 			}
 		}
-		console.log({ type });
+
+		const neutralTypes = damageRelation.doubleDamageFrom.filter((type) => damageRelation.halfDamageFrom.includes(type));
+		for (const neutralType of neutralTypes) {
+			damageRelation.doubleDamageFrom = damageRelation.doubleDamageFrom.filter((type) => type !== neutralType);
+			damageRelation.halfDamageFrom = damageRelation.halfDamageFrom.filter((type) => type !== neutralType);
+		}
+
+		for (const immuneType of damageRelation.noDamageFrom) {
+			if (damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.includes(immuneType)) {
+				damageRelation.quadrupleDamageFrom = damageRelation.quadrupleDamageFrom.filter((type) => type !== immuneType);
+			}
+			if (damageRelation.doubleDamageFrom.includes(immuneType)) {
+				damageRelation.doubleDamageFrom = damageRelation.doubleDamageFrom.filter((type) => type !== immuneType);
+			}
+			if (damageRelation.halfDamageFrom.includes(immuneType)) {
+				damageRelation.halfDamageFrom = damageRelation.halfDamageFrom.filter((type) => type !== immuneType);
+			}
+			if ( damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.includes(immuneType)) {
+				damageRelation.quarterDamageFrom = damageRelation.quarterDamageFrom.filter((type) => type !== immuneType);
+			}
+		}
+
 		return (
 			<>
 				<Popover
@@ -88,19 +109,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 				>
 					<Paper elevation={5} sx={{ height: '200px', width: '200px', p: 3 }}>
 						<Box>
-							Very weak to:
+							Very weak to: {damageRelation.quadrupleDamageFrom}
 						</Box>
 						<Box>
-							Weak to:
+							Weak to: {damageRelation.doubleDamageFrom}
 						</Box>
 						<Box>
-							Resists:
+							Resists: {damageRelation.halfDamageFrom}
 						</Box>
 						<Box>
-							Strongly resists:
+							Strongly resists: {damageRelation.quarterDamageFrom}
 						</Box>
 						<Box>
-							Immune:
+							Immune: {damageRelation.noDamageFrom}
 						</Box>
 					</Paper>
 				</Popover>
@@ -120,7 +141,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 		);
 	} else {
 		const typeName = props.typeStrings[0] as keyof Types;
-		let type: DamageRelation = {
+		let damageRelation: DamageRelation = {
 			doubleDamageFrom: [],
 			halfDamageFrom: [],
 			noDamageFrom: [],
@@ -128,7 +149,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 
 		for (const item of props.types) {
 			if (item.name === typeName) {
-				type = item;
+				damageRelation = item;
 			}
 		}
 
@@ -152,13 +173,13 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 				>
 					<Paper elevation={5} sx={{ height: '200px', width: '250px', p: 3 }}>
 						<Box>
-							Weak to: {type.doubleDamageFrom}
+							Weak to: {damageRelation.doubleDamageFrom}
 						</Box>
 						<Box>
-							Resists: {type.halfDamageFrom}
+							Resists: {damageRelation.halfDamageFrom}
 						</Box>
 						<Box>
-							Immune: {type.noDamageFrom}
+							Immune: {damageRelation.noDamageFrom}
 						</Box>
 					</Paper>
 				</Popover>
