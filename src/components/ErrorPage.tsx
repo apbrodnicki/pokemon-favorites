@@ -17,9 +17,9 @@ export const ErrorPage = (): React.JSX.Element => {
 	}
 
 	return (
-		<div id="error-page">
+		<>
 			<h1>Oops, something broke =(</h1>
 			<h2>{errorMessage}</h2>
-		</div>
+		</>
 	);
 };

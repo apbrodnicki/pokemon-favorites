@@ -3,7 +3,6 @@ import React from 'react';
 
 interface TooltipProps {
 	title: string,
-	enterDelay?: number,
 	children: React.PropsWithChildren<React.JSX.Element>
 }
 
@@ -13,7 +12,6 @@ export const CustomTooltip = (props: TooltipProps): React.JSX.Element => {
 			title={props.title}
 			TransitionComponent={Zoom}
 			placement='top'
-			enterDelay={props.enterDelay}
 			leaveDelay={100}
 			arrow
 		>
