@@ -113,16 +113,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 												<Grid
 													item
 													xs={3}
-													display='flex'
-													alignItems='center'
-													justifyContent='center'
-													sx={{
-														m: .5,
-														backgroundColor: typeColors[type as keyof Types]
-													}}
 													key={index}
 												>
-													<Typography align='center' p={2}>
+													<Typography
+														m={.5}
+														p={2}
+														display='flex'
+														alignItems='center'
+														justifyContent='center'
+														sx={{
+															backgroundColor: typeColors[type as keyof Types]
+														}}
+													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -140,16 +142,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 												<Grid
 													item
 													xs={3}
-													display='flex'
-													alignItems='center'
-													justifyContent='center'
-													sx={{
-														m: .5,
-														backgroundColor: typeColors[type as keyof Types]
-													}}
 													key={index}
 												>
-													<Typography align='center' p={2}>
+													<Typography
+														m={.5}
+														p={2}
+														display='flex'
+														alignItems='center'
+														justifyContent='center'
+														sx={{
+															backgroundColor: typeColors[type as keyof Types]
+														}}
+													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -167,16 +171,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 												<Grid
 													item
 													xs={3}
-													display='flex'
-													alignItems='center'
-													justifyContent='center'
-													sx={{
-														m: .5,
-														backgroundColor: typeColors[type as keyof Types]
-													}}
 													key={index}
 												>
-													<Typography align='center' p={2}>
+													<Typography
+														m={.5}
+														p={2}
+														display='flex'
+														alignItems='center'
+														justifyContent='center'
+														sx={{
+															backgroundColor: typeColors[type as keyof Types]
+														}}
+													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -194,16 +200,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 												<Grid
 													item
 													xs={3}
-													display='flex'
-													alignItems='center'
-													justifyContent='center'
-													sx={{
-														m: .5,
-														backgroundColor: typeColors[type as keyof Types]
-													}}
 													key={index}
 												>
-													<Typography align='center' p={2}>
+													<Typography
+														m={.5}
+														p={2}
+														display='flex'
+														alignItems='center'
+														justifyContent='center'
+														sx={{
+															backgroundColor: typeColors[type as keyof Types]
+														}}
+													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -221,16 +229,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 												<Grid
 													item
 													xs={3}
-													display='flex'
-													alignItems='center'
-													justifyContent='center'
-													sx={{
-														m: .5,
-														backgroundColor: typeColors[type as keyof Types]
-													}}
 													key={index}
 												>
-													<Typography align='center' p={2}>
+													<Typography
+														m={.5}
+														p={2}
+														display='flex'
+														alignItems='center'
+														justifyContent='center'
+														sx={{
+															backgroundColor: typeColors[type as keyof Types]
+														}}
+													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -301,16 +311,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 												<Grid
 													item
 													xs={3}
-													display='flex'
-													alignItems='center'
-													justifyContent='center'
-													sx={{
-														m: .5,
-														backgroundColor: typeColors[type as keyof Types]
-													}}
 													key={index}
 												>
-													<Typography align='center' p={2}>
+													<Typography
+														m={.5}
+														p={2}
+														display='flex'
+														alignItems='center'
+														justifyContent='center'
+														sx={{
+															backgroundColor: typeColors[type as keyof Types]
+														}}
+													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -328,16 +340,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 												<Grid
 													item
 													xs={3}
-													display='flex'
-													alignItems='center'
-													justifyContent='center'
-													sx={{
-														m: .5,
-														backgroundColor: typeColors[type as keyof Types]
-													}}
 													key={index}
 												>
-													<Typography align='center' p={2}>
+													<Typography
+														m={.5}
+														p={2}
+														display='flex'
+														alignItems='center'
+														justifyContent='center'
+														sx={{
+															backgroundColor: typeColors[type as keyof Types]
+														}}
+													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
@@ -355,16 +369,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 												<Grid
 													item
 													xs={3}
-													display='flex'
-													alignItems='center'
-													justifyContent='center'
-													sx={{
-														m: .5,
-														backgroundColor: typeColors[type as keyof Types]
-													}}
 													key={index}
 												>
-													<Typography align='center' p={2}>
+													<Typography
+														m={.5}
+														p={2}
+														display='flex'
+														alignItems='center'
+														justifyContent='center'
+														sx={{
+															backgroundColor: typeColors[type as keyof Types]
+														}}
+													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
 												</Grid>
