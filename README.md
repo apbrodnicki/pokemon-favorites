@@ -1,11 +1,18 @@
 # Pokémon Favorites
 
-This is an application that showcases a user's favorite list of Pokémon, organized by generation, rarity, region, etc.\
+This is an application that showcases a user's favorite list of Pokémon, organized by generation, rarity, region, etc.
+
+It is hosted using Github Pages, follow this link to view: https://apbrodnicki.github.io/pokemon-favorites/
+
 If you want to use it and make your own favorites, simply edit the values in `src/data.ts`.
 
 ## Packages
 
-This is a React/Typescript project that uses Material UI and React Router.
+The project is built in React/Typescript.
+
+It uses Material UI for the frontend, React Router for routing, and gh-pages for deployment.
+
+The backend data is supplied by [PokéApi](https://pokeapi.co/).
 
 # React Related Documentation
 
