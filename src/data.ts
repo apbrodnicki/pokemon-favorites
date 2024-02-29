@@ -305,7 +305,7 @@ export const gen9List: string[] = [
 	'garganacl',
 	'ceruledge',
 	'bellibolt',
-	'kiolwattrel',
+	'kilowattrel',
 	'brambleghast',
 	'klawf',
 	'scovillain',
