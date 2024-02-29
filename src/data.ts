@@ -259,11 +259,92 @@ export const gen7List: string[] = [
 ];
 
 export const gen8List: string[] = [
-
+	'rillaboom',
+	'cinderace',
+	'inteleon',
+	'corviknight',
+	'orbeetle',
+	'eldegoss',
+	'drednaw',
+	'coalossal',
+	'flapple',
+	'appletun',
+	'sandaconda',
+	'barraskewda',
+	// 'toxtricity',
+	// 'centiskorch',
+	// 'grapploct',
+	// 'cursola',
+	// 'runerigus',
+	// 'falinks',
+	// 'frosmoth',
+	// 'stonjourner',
+	// 'dracozolt',
+	// 'arctozolt',
+	// 'dracovish',
+	// 'arctovish',
+	// 'duraludon',
+	// 'dragapult',
+	// 'zacian',
+	// 'zacian-crowned',
+	// 'eternatus',
+	// 'urshifu',
+	// 'urshifu-rapid-strike',
+	// 'regieleki',
+	// 'spectrier',
+	// 'calyrex-shadow',
+	// 'ursaluna',
+	// 'sneasler',
 ];
 
 export const gen9List: string[] = [
-
+	'meowscarada',
+	'skeledirge',
+	'spidops',
+	'lokix',
+	'garganacl',
+	'ceruledge',
+	'bellibolt',
+	'kiolwattrel',
+	'brambleghast',
+	'klawf',
+	'scovillain',
+	'rabsca',
+	'tinkaton',
+	// 'palafin',
+	// 'revavroom',
+	// 'glimmora',
+	// 'cetitan',
+	// 'veluza',
+	// 'dondozo',
+	// 'annihilape',
+	// 'clodsire',
+	// 'dudunsparce',
+	// 'great tusk',
+	// 'flutter mane',
+	// 'slither wing',
+	// 'sandy shocks',
+	// 'iron hands',
+	// 'iron jugulis',
+	// 'iron moth',
+	// 'iron thorns',
+	// 'baxcalibur',
+	// 'gholdengo',
+	// 'wo-chien',
+	// 'chien-pao',
+	// 'ting-lu',
+	// 'chi-yu',
+	// 'roaring moon',
+	// 'koraidon',
+	// 'miraidon',
+	// 'walking wake',
+	// 'archaludon',
+	// 'hydrapple',
+	// 'gouging fire',
+	// 'raging bolt',
+	// 'iron boulder',
+	// 'terapagos',
+	// 'pecharunt',
 ];
 
 export const megasList: string[] = [
@@ -326,7 +407,7 @@ export const fossilsList: string[] = [
 ];
 
 export const legendariesList: string[] = [
-
+	'eternatus',
 ];
 
 export const regionalsList: string[] = [
