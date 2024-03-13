@@ -100,7 +100,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								elevation={5}
 								sx={{
 									backgroundColor: '#B8D8D8',
-									p: 3,
+									p: 2
 								}}
 							>
 								{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
@@ -114,16 +114,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 													item
 													xs={3}
 													key={index}
+													sx={{
+														backgroundColor: typeColors[type as keyof Types]
+													}}
 												>
 													<Typography
-														m={.5}
-														p={2}
+														mx={2}
+														my={0}
+														px={0}
+														py={0}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														sx={{
-															backgroundColor: typeColors[type as keyof Types]
-														}}
+														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -143,16 +146,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 													item
 													xs={3}
 													key={index}
+													sx={{
+														backgroundColor: typeColors[type as keyof Types]
+													}}
 												>
 													<Typography
-														m={.5}
-														p={2}
+														mx={2}
+														my={0}
+														px={0}
+														py={0}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														sx={{
-															backgroundColor: typeColors[type as keyof Types]
-														}}
+														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -172,16 +178,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 													item
 													xs={3}
 													key={index}
+													sx={{
+														backgroundColor: typeColors[type as keyof Types]
+													}}
 												>
 													<Typography
-														m={.5}
-														p={2}
+														mx={2}
+														my={0}
+														px={0}
+														py={0}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														sx={{
-															backgroundColor: typeColors[type as keyof Types]
-														}}
+														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -201,16 +210,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 													item
 													xs={3}
 													key={index}
+													sx={{
+														backgroundColor: typeColors[type as keyof Types]
+													}}
 												>
 													<Typography
-														m={.5}
-														p={2}
+														mx={2}
+														my={0}
+														px={0}
+														py={0}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														sx={{
-															backgroundColor: typeColors[type as keyof Types]
-														}}
+														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -230,16 +242,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 													item
 													xs={3}
 													key={index}
+													sx={{
+														backgroundColor: typeColors[type as keyof Types]
+													}}
 												>
 													<Typography
-														m={.5}
-														p={2}
+														mx={2}
+														my={0}
+														px={0}
+														py={0}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														sx={{
-															backgroundColor: typeColors[type as keyof Types]
-														}}
+														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -298,7 +313,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								elevation={5}
 								sx={{
 									backgroundColor: '#B8D8D8',
-									p: 3
+									p: 2
 								}}
 							>
 								{damageRelation.doubleDamageFrom.length > 0 && (
@@ -312,16 +327,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 													item
 													xs={3}
 													key={index}
+													sx={{
+														backgroundColor: typeColors[type as keyof Types]
+													}}
 												>
 													<Typography
-														m={.5}
-														p={2}
+														mx={2}
+														my={0}
+														px={0}
+														py={0}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														sx={{
-															backgroundColor: typeColors[type as keyof Types]
-														}}
+														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -341,16 +359,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 													item
 													xs={3}
 													key={index}
+													sx={{
+														backgroundColor: typeColors[type as keyof Types]
+													}}
 												>
 													<Typography
-														m={.5}
-														p={2}
+														mx={2}
+														my={0}
+														px={0}
+														py={0}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														sx={{
-															backgroundColor: typeColors[type as keyof Types]
-														}}
+														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -370,16 +391,19 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 													item
 													xs={3}
 													key={index}
+													sx={{
+														backgroundColor: typeColors[type as keyof Types]
+													}}
 												>
 													<Typography
-														m={.5}
-														p={2}
+														mx={2}
+														my={0}
+														px={0}
+														py={0}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														sx={{
-															backgroundColor: typeColors[type as keyof Types]
-														}}
+														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
