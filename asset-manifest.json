@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pokemon-favorites/static/css/main.876e1468.css",
-    "main.js": "/pokemon-favorites/static/js/main.d02963d5.js",
+    "main.js": "/pokemon-favorites/static/js/main.53b67bb0.js",
     "static/media/loader.gif": "/pokemon-favorites/static/media/loader.94cd27f15ba689bca6b0.gif",
     "static/media/roboto-latin-500-normal.woff2": "/pokemon-favorites/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
     "static/media/roboto-latin-700-normal.woff2": "/pokemon-favorites/static/media/roboto-latin-700-normal.227c93190fe7f82de3f8.woff2",
@@ -61,10 +61,10 @@
     "static/media/roboto-greek-ext-700-normal.woff": "/pokemon-favorites/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "index.html": "/pokemon-favorites/index.html",
     "main.876e1468.css.map": "/pokemon-favorites/static/css/main.876e1468.css.map",
-    "main.d02963d5.js.map": "/pokemon-favorites/static/js/main.d02963d5.js.map"
+    "main.53b67bb0.js.map": "/pokemon-favorites/static/js/main.53b67bb0.js.map"
   },
   "entrypoints": [
     "static/css/main.876e1468.css",
-    "static/js/main.d02963d5.js"
+    "static/js/main.53b67bb0.js"
   ]
 }
