@@ -112,21 +112,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 											{damageRelation.quadrupleDamageFrom?.map((type: string, index: number) => (
 												<Grid
 													item
-													xs={3}
 													key={index}
+													xs={3}
 													sx={{
 														backgroundColor: typeColors[type as keyof Types]
 													}}
 												>
 													<Typography
-														mx={2}
-														my={0}
-														px={0}
-														py={0}
+														mx={3}
+														my={1}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -144,21 +141,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
-													xs={3}
 													key={index}
+													xs={3}
 													sx={{
 														backgroundColor: typeColors[type as keyof Types]
 													}}
 												>
 													<Typography
-														mx={2}
-														my={0}
-														px={0}
-														py={0}
+														mx={3}
+														my={1}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -176,21 +170,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
-													xs={3}
 													key={index}
+													xs={3}
 													sx={{
 														backgroundColor: typeColors[type as keyof Types]
 													}}
 												>
 													<Typography
-														mx={2}
-														my={0}
-														px={0}
-														py={0}
+														mx={3}
+														my={1}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -208,21 +199,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 											{damageRelation.quarterDamageFrom?.map((type: string, index: number) => (
 												<Grid
 													item
-													xs={3}
 													key={index}
+													xs={3}
 													sx={{
 														backgroundColor: typeColors[type as keyof Types]
 													}}
 												>
 													<Typography
-														mx={2}
-														my={0}
-														px={0}
-														py={0}
+														mx={3}
+														my={1}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -240,21 +228,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
-													xs={3}
 													key={index}
+													xs={3}
 													sx={{
 														backgroundColor: typeColors[type as keyof Types]
 													}}
 												>
 													<Typography
-														mx={2}
-														my={0}
-														px={0}
-														py={0}
+														mx={3}
+														my={1}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -325,21 +310,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
-													xs={3}
 													key={index}
+													xs={3}
 													sx={{
 														backgroundColor: typeColors[type as keyof Types]
 													}}
 												>
 													<Typography
-														mx={2}
-														my={0}
-														px={0}
-														py={0}
+														mx={3}
+														my={1}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -357,21 +339,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
-													xs={3}
 													key={index}
+													xs={3}
 													sx={{
 														backgroundColor: typeColors[type as keyof Types]
 													}}
 												>
 													<Typography
-														mx={2}
-														my={0}
-														px={0}
-														py={0}
+														mx={3}
+														my={1}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
@@ -389,21 +368,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
-													xs={3}
 													key={index}
+													xs={3}
 													sx={{
 														backgroundColor: typeColors[type as keyof Types]
 													}}
 												>
 													<Typography
-														mx={2}
-														my={0}
-														px={0}
-														py={0}
+														mx={3}
+														my={1}
 														display='flex'
 														alignItems='center'
 														justifyContent='center'
-														flexGrow={1}
 													>
 														{capitalizeFirstLetter(type)}
 													</Typography>
