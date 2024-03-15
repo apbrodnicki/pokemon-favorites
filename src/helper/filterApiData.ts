@@ -46,12 +46,9 @@ export const filterPokemonData = (pokemon: GenericPokemon): Pokemon => {
 	}
 
 	const convertedStats: Stats = {
-		hp: stats.hp,
-		attack: stats.attack,
-		defense: stats.defense,
 		specialAttack: stats['special-attack'],
 		specialDefense: stats['special-defense'],
-		speed: stats.speed,
+		...stats
 	};
 
 	return {
