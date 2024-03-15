@@ -5,7 +5,7 @@ import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
 import HoverPopover from 'material-ui-popup-state/HoverPopover';
 import type { DamageRelation, Type, Types } from 'models/models';
 import React from 'react';
-
+// refactor this file to remove redundancies
 interface TypesCellProps {
 	typeStrings: Array<keyof Types>,
 	types: Type[]
@@ -100,15 +100,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								elevation={5}
 								sx={{
 									backgroundColor: '#B8D8D8',
-									p: 2
+									p: 2,
+									minWidth: '350px',
 								}}
 							>
 								{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
 									<>
 										<Typography>
+											<Box fontWeight='medium'>
 											Very weak to (4x):
+											</Box>
 										</Typography>
-										<Grid container>
+										<Grid container py={.5}>
 											{damageRelation.quadrupleDamageFrom?.map((type: string, index: number) => (
 												<Grid
 													item
@@ -125,7 +128,9 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 														alignItems='center'
 														justifyContent='center'
 													>
-														{capitalizeFirstLetter(type)}
+														<Box fontWeight='regular'>
+															{capitalizeFirstLetter(type)}
+														</Box>
 													</Typography>
 												</Grid>
 											))}
@@ -135,9 +140,11 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								{damageRelation.doubleDamageFrom.length > 0 && (
 									<>
 										<Typography>
+											<Box fontWeight='medium'>
 											Weak to (2x):
+											</Box>
 										</Typography>
-										<Grid container>
+										<Grid container py={.5}>
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
@@ -154,7 +161,9 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 														alignItems='center'
 														justifyContent='center'
 													>
-														{capitalizeFirstLetter(type)}
+														<Box fontWeight='regular'>
+															{capitalizeFirstLetter(type)}
+														</Box>
 													</Typography>
 												</Grid>
 											))}
@@ -164,9 +173,11 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								{damageRelation.halfDamageFrom.length > 0 && (
 									<>
 										<Typography>
+											<Box fontWeight='medium'>
 											Resists (.5x):
+											</Box>
 										</Typography>
-										<Grid container>
+										<Grid container py={.5}>
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
@@ -183,7 +194,9 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 														alignItems='center'
 														justifyContent='center'
 													>
-														{capitalizeFirstLetter(type)}
+														<Box fontWeight='regular'>
+															{capitalizeFirstLetter(type)}
+														</Box>
 													</Typography>
 												</Grid>
 											))}
@@ -193,9 +206,11 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								{damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.length > 0 && (
 									<>
 										<Typography>
+											<Box fontWeight='medium'>
 											Strongly resists (.25x):
+											</Box>
 										</Typography>
-										<Grid container>
+										<Grid container py={.5}>
 											{damageRelation.quarterDamageFrom?.map((type: string, index: number) => (
 												<Grid
 													item
@@ -212,7 +227,9 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 														alignItems='center'
 														justifyContent='center'
 													>
-														{capitalizeFirstLetter(type)}
+														<Box fontWeight='regular'>
+															{capitalizeFirstLetter(type)}
+														</Box>
 													</Typography>
 												</Grid>
 											))}
@@ -222,9 +239,11 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								{damageRelation.noDamageFrom.length > 0 && (
 									<>
 										<Typography>
+											<Box fontWeight='medium'>
 											Immune to (0x):
+											</Box>
 										</Typography>
-										<Grid container>
+										<Grid container py={.5}>
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
@@ -241,7 +260,9 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 														alignItems='center'
 														justifyContent='center'
 													>
-														{capitalizeFirstLetter(type)}
+														<Box fontWeight='regular'>
+															{capitalizeFirstLetter(type)}
+														</Box>
 													</Typography>
 												</Grid>
 											))}
@@ -298,15 +319,18 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								elevation={5}
 								sx={{
 									backgroundColor: '#B8D8D8',
-									p: 2
+									p: 2,
+									minWidth: '350px',
 								}}
 							>
 								{damageRelation.doubleDamageFrom.length > 0 && (
 									<>
 										<Typography>
+											<Box fontWeight='medium'>
 											Weak to (2x):
+											</Box>
 										</Typography>
-										<Grid container>
+										<Grid container py={.5}>
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
@@ -323,7 +347,9 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 														alignItems='center'
 														justifyContent='center'
 													>
-														{capitalizeFirstLetter(type)}
+														<Box fontWeight='regular'>
+															{capitalizeFirstLetter(type)}
+														</Box>
 													</Typography>
 												</Grid>
 											))}
@@ -333,9 +359,11 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								{damageRelation.halfDamageFrom.length > 0 && (
 									<>
 										<Typography>
+											<Box fontWeight='medium'>
 											Resists (.5x):
+											</Box>
 										</Typography>
-										<Grid container>
+										<Grid container py={.5}>
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
@@ -352,7 +380,9 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 														alignItems='center'
 														justifyContent='center'
 													>
-														{capitalizeFirstLetter(type)}
+														<Box fontWeight='regular'>
+															{capitalizeFirstLetter(type)}
+														</Box>
 													</Typography>
 												</Grid>
 											))}
@@ -362,9 +392,11 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								{damageRelation.noDamageFrom.length > 0 && (
 									<>
 										<Typography>
+											<Box fontWeight='medium'>
 											Immune to (0x):
+											</Box>
 										</Typography>
-										<Grid container>
+										<Grid container py={.5}>
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
 												<Grid
 													item
@@ -381,7 +413,9 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 														alignItems='center'
 														justifyContent='center'
 													>
-														{capitalizeFirstLetter(type)}
+														<Box fontWeight='regular'>
+															{capitalizeFirstLetter(type)}
+														</Box>
 													</Typography>
 												</Grid>
 											))}
