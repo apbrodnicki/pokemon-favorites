@@ -5,13 +5,36 @@ import PopupState, { bindHover, bindPopover } from 'material-ui-popup-state';
 import HoverPopover from 'material-ui-popup-state/HoverPopover';
 import type { DamageRelation, Type, Types } from 'models/models';
 import React from 'react';
-// refactor this file to remove redundancies
+
 interface TypesCellProps {
 	typeStrings: Array<keyof Types>,
 	types: Type[]
 }
 
 export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
+	const HoverGridItem = (type: string, index: number): React.JSX.Element => (
+		<Grid
+			item
+			key={index}
+			xs={3}
+			sx={{
+				backgroundColor: typeColors[type as keyof Types]
+			}}
+		>
+			<Typography
+				mx={3}
+				my={1}
+				display='flex'
+				alignItems='center'
+				justifyContent='center'
+			>
+				<Box fontWeight='regular'>
+					{capitalizeFirstLetter(type)}
+				</Box>
+			</Typography>
+		</Grid>
+	);
+
 	if (props.typeStrings.length > 1) {
 		const typeBoxes = props.typeStrings.map((typeName: keyof Types, index: number) => (
 			<Box
@@ -108,31 +131,12 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 									<>
 										<Typography>
 											<Box fontWeight='medium'>
-											Very weak to (4x):
+												Very weak to (4x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
 											{damageRelation.quadrupleDamageFrom?.map((type: string, index: number) => (
-												<Grid
-													item
-													key={index}
-													xs={3}
-													sx={{
-														backgroundColor: typeColors[type as keyof Types]
-													}}
-												>
-													<Typography
-														mx={3}
-														my={1}
-														display='flex'
-														alignItems='center'
-														justifyContent='center'
-													>
-														<Box fontWeight='regular'>
-															{capitalizeFirstLetter(type)}
-														</Box>
-													</Typography>
-												</Grid>
+												HoverGridItem(type, index)
 											))}
 										</Grid>
 									</>
@@ -141,31 +145,12 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 									<>
 										<Typography>
 											<Box fontWeight='medium'>
-											Weak to (2x):
+												Weak to (2x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
-												<Grid
-													item
-													key={index}
-													xs={3}
-													sx={{
-														backgroundColor: typeColors[type as keyof Types]
-													}}
-												>
-													<Typography
-														mx={3}
-														my={1}
-														display='flex'
-														alignItems='center'
-														justifyContent='center'
-													>
-														<Box fontWeight='regular'>
-															{capitalizeFirstLetter(type)}
-														</Box>
-													</Typography>
-												</Grid>
+												HoverGridItem(type, index)
 											))}
 										</Grid>
 									</>
@@ -174,31 +159,12 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 									<>
 										<Typography>
 											<Box fontWeight='medium'>
-											Resists (.5x):
+												Resists (.5x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
-												<Grid
-													item
-													key={index}
-													xs={3}
-													sx={{
-														backgroundColor: typeColors[type as keyof Types]
-													}}
-												>
-													<Typography
-														mx={3}
-														my={1}
-														display='flex'
-														alignItems='center'
-														justifyContent='center'
-													>
-														<Box fontWeight='regular'>
-															{capitalizeFirstLetter(type)}
-														</Box>
-													</Typography>
-												</Grid>
+												HoverGridItem(type, index)
 											))}
 										</Grid>
 									</>
@@ -207,31 +173,12 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 									<>
 										<Typography>
 											<Box fontWeight='medium'>
-											Strongly resists (.25x):
+												Strongly resists (.25x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
 											{damageRelation.quarterDamageFrom?.map((type: string, index: number) => (
-												<Grid
-													item
-													key={index}
-													xs={3}
-													sx={{
-														backgroundColor: typeColors[type as keyof Types]
-													}}
-												>
-													<Typography
-														mx={3}
-														my={1}
-														display='flex'
-														alignItems='center'
-														justifyContent='center'
-													>
-														<Box fontWeight='regular'>
-															{capitalizeFirstLetter(type)}
-														</Box>
-													</Typography>
-												</Grid>
+												HoverGridItem(type, index)
 											))}
 										</Grid>
 									</>
@@ -240,31 +187,12 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 									<>
 										<Typography>
 											<Box fontWeight='medium'>
-											Immune to (0x):
+												Immune to (0x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
-												<Grid
-													item
-													key={index}
-													xs={3}
-													sx={{
-														backgroundColor: typeColors[type as keyof Types]
-													}}
-												>
-													<Typography
-														mx={3}
-														my={1}
-														display='flex'
-														alignItems='center'
-														justifyContent='center'
-													>
-														<Box fontWeight='regular'>
-															{capitalizeFirstLetter(type)}
-														</Box>
-													</Typography>
-												</Grid>
+												HoverGridItem(type, index)
 											))}
 										</Grid>
 									</>
@@ -327,31 +255,12 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 									<>
 										<Typography>
 											<Box fontWeight='medium'>
-											Weak to (2x):
+												Weak to (2x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
 											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
-												<Grid
-													item
-													key={index}
-													xs={3}
-													sx={{
-														backgroundColor: typeColors[type as keyof Types]
-													}}
-												>
-													<Typography
-														mx={3}
-														my={1}
-														display='flex'
-														alignItems='center'
-														justifyContent='center'
-													>
-														<Box fontWeight='regular'>
-															{capitalizeFirstLetter(type)}
-														</Box>
-													</Typography>
-												</Grid>
+												HoverGridItem(type, index)
 											))}
 										</Grid>
 									</>
@@ -360,31 +269,12 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 									<>
 										<Typography>
 											<Box fontWeight='medium'>
-											Resists (.5x):
+												Resists (.5x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
 											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
-												<Grid
-													item
-													key={index}
-													xs={3}
-													sx={{
-														backgroundColor: typeColors[type as keyof Types]
-													}}
-												>
-													<Typography
-														mx={3}
-														my={1}
-														display='flex'
-														alignItems='center'
-														justifyContent='center'
-													>
-														<Box fontWeight='regular'>
-															{capitalizeFirstLetter(type)}
-														</Box>
-													</Typography>
-												</Grid>
+												HoverGridItem(type, index)
 											))}
 										</Grid>
 									</>
@@ -393,31 +283,12 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 									<>
 										<Typography>
 											<Box fontWeight='medium'>
-											Immune to (0x):
+												Immune to (0x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
 											{damageRelation.noDamageFrom.map((type: string, index: number) => (
-												<Grid
-													item
-													key={index}
-													xs={3}
-													sx={{
-														backgroundColor: typeColors[type as keyof Types]
-													}}
-												>
-													<Typography
-														mx={3}
-														my={1}
-														display='flex'
-														alignItems='center'
-														justifyContent='center'
-													>
-														<Box fontWeight='regular'>
-															{capitalizeFirstLetter(type)}
-														</Box>
-													</Typography>
-												</Grid>
+												HoverGridItem(type, index)
 											))}
 										</Grid>
 									</>
