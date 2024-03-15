@@ -3,7 +3,7 @@ import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
 import { useFetchPokemon } from 'api/useFetchPokemon';
 import { useFetchTypes } from 'api/useFetchTypes';
-import loader from 'assets/loader.gif';
+import loader from 'assets/loader.webm';
 import { getDataGridColumns } from 'helper/getDataGridColumns';
 import { getPokemonList, reduceArray } from 'helper/helper';
 import { type Pokemon, type PokemonListsTemplate } from 'models/models';
@@ -65,7 +65,9 @@ export const PokemonDataGrid = (props: PokemonDataGridProps): React.JSX.Element 
 				</>
 			) : (
 				<Box display='flex' justifyContent='center' m={3}>
-					<img src={loader} alt='loading' width={800} height={600} />
+					<video autoPlay loop muted>
+						<source src={loader} />
+					</video>
 				</Box>
 			)}
 		</>
