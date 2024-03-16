@@ -16,7 +16,7 @@ export const AbilitiesCell = (props: AbilitiesCellProps): React.JSX.Element => (
 
 			return (
 				<CustomTooltip
-					title={(title != null) ? title[ability] : ''}
+					title={(title !== undefined) ? title[ability] : ''}
 					key={index}
 				>
 					<Typography my={1} align='center'>{formatAbilityName(ability)}</Typography>
