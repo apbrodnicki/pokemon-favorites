@@ -105,7 +105,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 		}
 
 		return (
-			<PopupState variant="popover" popupId="doubleTypesPopup">
+			<PopupState variant='popover' popupId='doubleTypesPopup'>
 				{(popupState) => (
 					<>
 						<HoverPopover
@@ -229,7 +229,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 		}
 
 		return (
-			<PopupState variant="popover" popupId="singleTypePopup">
+			<PopupState variant='popover' popupId='singleTypePopup'>
 				{(popupState) => (
 					<>
 						<HoverPopover

@@ -35,7 +35,7 @@ export const Footer = (): React.JSX.Element => {
 						</Typography>
 						<CustomTooltip title='The PokéAPI website'>
 							<MuiLink href='https://pokeapi.co/' target='_blank' underline='hover' color='black'>
-								<Typography variant="subtitle2">
+								<Typography variant='subtitle2'>
 								Data provided by PokéAPI
 								</Typography>
 							</MuiLink>

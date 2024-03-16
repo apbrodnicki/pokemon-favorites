@@ -23,10 +23,10 @@ export const Header = (): React.JSX.Element => {
 					/>
 				</CustomTooltip>
 				<CustomTooltip title='Home Page'>
-					<Link to="/" style={{ textDecoration: 'none' }}>
+					<Link to='/' style={{ textDecoration: 'none' }}>
 						<Typography
 							color='black'
-							align="center"
+							align='center'
 							sx={{
 								typography: {
 									md: 'h1',
