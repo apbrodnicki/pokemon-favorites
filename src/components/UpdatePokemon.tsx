@@ -9,7 +9,7 @@ interface UpdatePokemonProps {
 	setSnackbarMessage: React.Dispatch<React.SetStateAction<string>>,
 	setSnackbarColor: React.Dispatch<React.SetStateAction<'success' | 'info' | 'warning' | 'error'>>
 }
-
+// TODO: Fix input not clearing after submit.
 export const UpdatePokemon = (
 	{
 		pokemonList,
@@ -20,7 +20,6 @@ export const UpdatePokemon = (
 	}: UpdatePokemonProps
 ): React.JSX.Element => {
 	const [pokemonInput, setPokemonInput] = useState<string>('');
-
 	const allPokemon = useFetchAllPokemon();
 
 	useEffect(() => {
@@ -34,7 +33,6 @@ export const UpdatePokemon = (
 	};
 
 	const UpdatePokemon = (action: 'add' | 'remove'): void => {
-		console.log('start of updatepokemon', action, pokemonInput);
 		if (pokemonInput === '') {
 			setSnackbarMessage('Error: Input value is empty.');
 			setSnackbarColor('error');
@@ -63,7 +61,6 @@ export const UpdatePokemon = (
 
 		setPokemonInput('');
 	};
-	console.log(pokemonInput);
 
 	return (
 		<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>

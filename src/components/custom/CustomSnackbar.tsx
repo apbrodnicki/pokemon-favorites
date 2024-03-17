@@ -1,7 +1,7 @@
 import { Alert, Snackbar } from '@mui/material';
 import React from 'react';
 
-export interface CustomSnackbarProps {
+interface CustomSnackbarProps {
 	snackbarOpen: boolean,
 	setSnackbarOpen: React.Dispatch<React.SetStateAction<boolean>>,
 	severity: 'success' | 'info' | 'warning' | 'error',
