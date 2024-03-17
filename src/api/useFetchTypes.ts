@@ -9,25 +9,27 @@ interface useFetchTypesProps {
 	setIsLoadingTypes: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const useFetchTypes = (props: useFetchTypesProps): Type[] => {
+export const useFetchTypes = (
+	{ typesList, setIsLoadingTypes }: useFetchTypesProps
+): Type[] => {
 	const [types, setTypes] = useState<Type[]>([]);
 
 	useEffect(() => {
 		const fetchData = async (): Promise<void> => {
 			try {
-				const promises = props.typesList.map(async (type: string) => await fetchType(type));
+				const promises = typesList.map(async (type: string) => await fetchType(type));
 				const typesData = await Promise.all(promises);
 				const filteredTypes = typesData.map(filterTypeData);
 				setTypes(filteredTypes);
 			} catch (error) {
 				console.log('Error fetching types ->', error);
 			} finally {
-				props.setIsLoadingTypes(false);
+				setIsLoadingTypes(false);
 			}
 		};
 
 		void fetchData();
-	}, [props.typesList.join(',')]);
+	}, [typesList.join(',')]);
 
 	return types;
 };

@@ -9,10 +9,12 @@ interface AbilitiesCellProps {
 	abilities: Ability[]
 }
 
-export const AbilitiesCell = (props: AbilitiesCellProps): React.JSX.Element => (
+export const AbilitiesCell = (
+	{ abilityStrings, abilities }: AbilitiesCellProps
+): React.JSX.Element => (
 	<Box>
-		{props.abilityStrings.map((ability: string, index: number) => {
-			const title = props.abilities.find(currentAbility => Object.keys(currentAbility).includes(ability));
+		{abilityStrings.map((ability: string, index: number) => {
+			const title = abilities.find(currentAbility => Object.keys(currentAbility).includes(ability));
 
 			return (
 				<CustomTooltip

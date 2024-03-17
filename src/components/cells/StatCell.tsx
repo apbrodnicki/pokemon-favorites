@@ -6,16 +6,18 @@ interface StatCellProps {
 	statValue: number
 }
 
-export const StatCell = (props: StatCellProps): React.JSX.Element => (
+export const StatCell = (
+	{ statValue }: StatCellProps
+): React.JSX.Element => (
 	<Box width='100%'>
-		<Typography my={1} textAlign='center'>{props.statValue}</Typography>
+		<Typography my={1} textAlign='center'>{statValue}</Typography>
 		<LinearProgress
 			variant='determinate'
-			value={props.statValue / 255 * 100}
+			value={statValue / 255 * 100}
 			sx={{
 				height: 30,
 				'& .MuiLinearProgress-bar1Determinate': {
-					backgroundColor: getProgressColor(props.statValue / 255 * 100)
+					backgroundColor: getProgressColor(statValue / 255 * 100)
 				}
 			}}
 		/>

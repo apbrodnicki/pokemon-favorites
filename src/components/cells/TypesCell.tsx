@@ -11,7 +11,9 @@ interface TypesCellProps {
 	types: Type[]
 }
 
-export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
+export const TypesCell = (
+	{ typeStrings, types }: TypesCellProps
+): React.JSX.Element => {
 	const HoverGridItem = (type: string, index: number): React.JSX.Element => (
 		<Grid
 			item

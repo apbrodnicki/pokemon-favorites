@@ -9,25 +9,27 @@ interface useFetchPokemonProps {
 	setIsLoadingPokemon: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const useFetchPokemon = (props: useFetchPokemonProps): Pokemon[] => {
+export const useFetchPokemon = (
+	{ pokemonList, setIsLoadingPokemon }: useFetchPokemonProps
+): Pokemon[] => {
 	const [pokemon, setPokemon] = useState<Pokemon[]>([]);
 
 	useEffect(() => {
 		const fetchData = async (): Promise<void> => {
 			try {
-				const promises = props.pokemonList.map(async (mon: string) => await fetchPokemon(mon));
+				const promises = pokemonList.map(async (mon: string) => await fetchPokemon(mon));
 				const pokemonData = await Promise.all(promises);
 				const filteredPokemon = pokemonData.map(filterPokemonData);
 				setPokemon(filteredPokemon);
 			} catch (error) {
 				console.log('Error fetching Pokémon ->', error);
 			} finally {
-				props.setIsLoadingPokemon(false);
+				setIsLoadingPokemon(false);
 			}
 		};
 
 		void fetchData();
-	}, [props.pokemonList]);
+	}, [pokemonList]);
 
 	return pokemon;
 };
