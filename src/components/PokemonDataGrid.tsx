@@ -1,4 +1,4 @@
-import { Box, Paper } from '@mui/material';
+import { Box, CardMedia, Paper } from '@mui/material';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import { useFetchAbilityDescriptions } from 'api/useFetchAbilityDescriptions';
 import { useFetchPokemon } from 'api/useFetchPokemon';
@@ -57,10 +57,15 @@ export const PokemonDataGrid = (): React.JSX.Element => {
 				</Paper>
 			) : (
 				<Box display='flex' justifyContent='center' m={3}>
-					{/* Replace with MUI components */}
-					<video autoPlay loop muted>
-						<source src={loader} />
-					</video>
+					<CardMedia
+						component='video'
+						src={loader}
+						autoPlay
+						loop
+						muted
+						width='800px'
+						height='600px'
+					/>
 				</Box>
 			)}
 		</>
