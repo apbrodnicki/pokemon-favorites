@@ -66,10 +66,10 @@ export interface GenericAbilities {
 export interface GenericType {
 	name: string,
 	damage_relations: {
-		double_damage_from: [{
+		no_damage_from: [{
 			name: string
 		}],
-		double_damage_to: [{
+		no_damage_to: [{
 			name: string
 		}],
 		half_damage_from: [{
@@ -78,10 +78,10 @@ export interface GenericType {
 		half_damage_to: [{
 			name: string
 		}],
-		no_damage_from: [{
+		double_damage_from: [{
 			name: string
 		}],
-		no_damage_to: [{
+		double_damage_to: [{
 			name: string
 		}],
 	},
@@ -89,10 +89,10 @@ export interface GenericType {
 }
 
 export interface GenericDamageRelation {
-	double_damage_from: string[],
-	double_damage_to: string[],
-	half_damage_from: string[],
-	half_damage_to: string[],
 	no_damage_from: string[],
 	no_damage_to: string[],
+	half_damage_from: string[],
+	half_damage_to: string[],
+	double_damage_from: string[],
+	double_damage_to: string[],
 }

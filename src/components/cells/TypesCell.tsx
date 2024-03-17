@@ -11,9 +11,7 @@ interface TypesCellProps {
 	types: Type[]
 }
 
-export const TypesCell = (
-	{ typeStrings, types }: TypesCellProps
-): React.JSX.Element => {
+export const TypesCell = ({ typeStrings, types }: TypesCellProps): React.JSX.Element => {
 	const HoverGridItem = (type: string, index: number): React.JSX.Element => (
 		<Grid
 			item
@@ -52,11 +50,11 @@ export const TypesCell = (
 		));
 
 		const damageRelation: DamageRelation = {
-			quadrupleDamageFrom: [],
-			doubleDamageFrom: [],
-			halfDamageFrom: [],
-			quarterDamageFrom: [],
 			noDamageFrom: [],
+			quarterDamageFrom: [],
+			halfDamageFrom: [],
+			doubleDamageFrom: [],
+			quadrupleDamageFrom: [],
 		};
 
 		for (const typeName of typeStrings) {
@@ -130,43 +128,15 @@ export const TypesCell = (
 									minWidth: '350px',
 								}}
 							>
-								{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
+								{damageRelation.noDamageFrom.length > 0 && (
 									<>
 										<Typography component='div'>
 											<Box fontWeight='medium'>
-												Very weak to (4x):
+												Immune to (0x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
-											{damageRelation.quadrupleDamageFrom?.map((type: string, index: number) => (
-												HoverGridItem(type, index)
-											))}
-										</Grid>
-									</>
-								)}
-								{damageRelation.doubleDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Weak to (2x):
-											</Box>
-										</Typography>
-										<Grid container py={.5}>
-											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
-												HoverGridItem(type, index)
-											))}
-										</Grid>
-									</>
-								)}
-								{damageRelation.halfDamageFrom.length > 0 && (
-									<>
-										<Typography component='div'>
-											<Box fontWeight='medium'>
-												Resists (.5x):
-											</Box>
-										</Typography>
-										<Grid container py={.5}>
-											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
+											{damageRelation.noDamageFrom.map((type: string, index: number) => (
 												HoverGridItem(type, index)
 											))}
 										</Grid>
@@ -186,15 +156,43 @@ export const TypesCell = (
 										</Grid>
 									</>
 								)}
-								{damageRelation.noDamageFrom.length > 0 && (
+								{damageRelation.halfDamageFrom.length > 0 && (
 									<>
 										<Typography component='div'>
 											<Box fontWeight='medium'>
-												Immune to (0x):
+												Resists (.5x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
-											{damageRelation.noDamageFrom.map((type: string, index: number) => (
+											{damageRelation.halfDamageFrom.map((type: string, index: number) => (
+												HoverGridItem(type, index)
+											))}
+										</Grid>
+									</>
+								)}
+								{damageRelation.doubleDamageFrom.length > 0 && (
+									<>
+										<Typography component='div'>
+											<Box fontWeight='medium'>
+												Weak to (2x):
+											</Box>
+										</Typography>
+										<Grid container py={.5}>
+											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
+												HoverGridItem(type, index)
+											))}
+										</Grid>
+									</>
+								)}
+								{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
+									<>
+										<Typography component='div'>
+											<Box fontWeight='medium'>
+												Very weak to (4x):
+											</Box>
+										</Typography>
+										<Grid container py={.5}>
+											{damageRelation.quadrupleDamageFrom?.map((type: string, index: number) => (
 												HoverGridItem(type, index)
 											))}
 										</Grid>
@@ -220,9 +218,9 @@ export const TypesCell = (
 	} else {
 		const typeName = typeStrings[0] as keyof Types;
 		let damageRelation: DamageRelation = {
-			doubleDamageFrom: [],
-			halfDamageFrom: [],
 			noDamageFrom: [],
+			halfDamageFrom: [],
+			doubleDamageFrom: [],
 		};
 
 		for (const item of types) {
@@ -254,15 +252,15 @@ export const TypesCell = (
 									minWidth: '350px',
 								}}
 							>
-								{damageRelation.doubleDamageFrom.length > 0 && (
+								{damageRelation.noDamageFrom.length > 0 && (
 									<>
 										<Typography component='div'>
 											<Box fontWeight='medium'>
-												Weak to (2x):
+												Immune to (0x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
-											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
+											{damageRelation.noDamageFrom.map((type: string, index: number) => (
 												HoverGridItem(type, index)
 											))}
 										</Grid>
@@ -282,15 +280,15 @@ export const TypesCell = (
 										</Grid>
 									</>
 								)}
-								{damageRelation.noDamageFrom.length > 0 && (
+								{damageRelation.doubleDamageFrom.length > 0 && (
 									<>
 										<Typography component='div'>
 											<Box fontWeight='medium'>
-												Immune to (0x):
+												Weak to (2x):
 											</Box>
 										</Typography>
 										<Grid container py={.5}>
-											{damageRelation.noDamageFrom.map((type: string, index: number) => (
+											{damageRelation.doubleDamageFrom.map((type: string, index: number) => (
 												HoverGridItem(type, index)
 											))}
 										</Grid>

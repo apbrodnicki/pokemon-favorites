@@ -86,12 +86,12 @@ export const getAbilityDescription = (ability: GenericAbility): Ability => {
 
 export const filterTypeData = (type: GenericType): Type => {
 	const damageRelation: GenericDamageRelation = {
-		double_damage_from: [],
-		double_damage_to: [],
-		half_damage_from: [],
-		half_damage_to: [],
 		no_damage_from: [],
 		no_damage_to: [],
+		half_damage_from: [],
+		half_damage_to: [],
+		double_damage_from: [],
+		double_damage_to: [],
 	};
 
 	for (const relation in type.damage_relations) {
@@ -101,9 +101,9 @@ export const filterTypeData = (type: GenericType): Type => {
 	}
 
 	const convertedDamageRelation: DamageRelation = {
-		doubleDamageFrom: damageRelation.double_damage_from,
-		halfDamageFrom: damageRelation.half_damage_from,
 		noDamageFrom: damageRelation.no_damage_from,
+		halfDamageFrom: damageRelation.half_damage_from,
+		doubleDamageFrom: damageRelation.double_damage_from,
 	};
 
 	return {
