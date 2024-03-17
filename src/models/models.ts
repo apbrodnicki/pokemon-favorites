@@ -1,5 +1,6 @@
 export interface Pokemon extends Stats {
 	name: string,
+	originalName: string,
 	sprite: string,
 	types: string[],
 	abilities: string[],
