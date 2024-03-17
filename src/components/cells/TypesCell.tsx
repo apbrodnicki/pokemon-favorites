@@ -38,8 +38,8 @@ export const TypesCell = (
 		</Grid>
 	);
 
-	if (props.typeStrings.length > 1) {
-		const typeBoxes = props.typeStrings.map((typeName: keyof Types, index: number) => (
+	if (typeStrings.length > 1) {
+		const typeBoxes = typeStrings.map((typeName: keyof Types, index: number) => (
 			<Box
 				sx={{
 					width: '40%',
@@ -59,8 +59,8 @@ export const TypesCell = (
 			noDamageFrom: [],
 		};
 
-		for (const typeName of props.typeStrings) {
-			for (const item of props.types) {
+		for (const typeName of typeStrings) {
+			for (const item of types) {
 				if (item.name === typeName) {
 					for (const currentType of item.doubleDamageFrom) {
 						if (!damageRelation.doubleDamageFrom.includes(currentType)) {
@@ -218,14 +218,14 @@ export const TypesCell = (
 			</PopupState>
 		);
 	} else {
-		const typeName = props.typeStrings[0] as keyof Types;
+		const typeName = typeStrings[0] as keyof Types;
 		let damageRelation: DamageRelation = {
 			doubleDamageFrom: [],
 			halfDamageFrom: [],
 			noDamageFrom: [],
 		};
 
-		for (const item of props.types) {
+		for (const item of types) {
 			if (item.name === typeName) {
 				damageRelation = item;
 			}
