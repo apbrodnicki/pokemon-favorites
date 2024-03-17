@@ -22,6 +22,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 			}}
 		>
 			<Typography
+				component='div'
 				mx={3}
 				my={1}
 				display='flex'
@@ -129,7 +130,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 							>
 								{damageRelation.quadrupleDamageFrom !== undefined && damageRelation.quadrupleDamageFrom.length > 0 && (
 									<>
-										<Typography>
+										<Typography component='div'>
 											<Box fontWeight='medium'>
 												Very weak to (4x):
 											</Box>
@@ -143,7 +144,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								)}
 								{damageRelation.doubleDamageFrom.length > 0 && (
 									<>
-										<Typography>
+										<Typography component='div'>
 											<Box fontWeight='medium'>
 												Weak to (2x):
 											</Box>
@@ -157,7 +158,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								)}
 								{damageRelation.halfDamageFrom.length > 0 && (
 									<>
-										<Typography>
+										<Typography component='div'>
 											<Box fontWeight='medium'>
 												Resists (.5x):
 											</Box>
@@ -171,7 +172,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								)}
 								{damageRelation.quarterDamageFrom !== undefined && damageRelation.quarterDamageFrom.length > 0 && (
 									<>
-										<Typography>
+										<Typography component='div'>
 											<Box fontWeight='medium'>
 												Strongly resists (.25x):
 											</Box>
@@ -185,7 +186,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								)}
 								{damageRelation.noDamageFrom.length > 0 && (
 									<>
-										<Typography>
+										<Typography component='div'>
 											<Box fontWeight='medium'>
 												Immune to (0x):
 											</Box>
@@ -253,7 +254,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 							>
 								{damageRelation.doubleDamageFrom.length > 0 && (
 									<>
-										<Typography>
+										<Typography component='div'>
 											<Box fontWeight='medium'>
 												Weak to (2x):
 											</Box>
@@ -267,7 +268,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								)}
 								{damageRelation.halfDamageFrom.length > 0 && (
 									<>
-										<Typography>
+										<Typography component='div'>
 											<Box fontWeight='medium'>
 												Resists (.5x):
 											</Box>
@@ -281,7 +282,7 @@ export const TypesCell = (props: TypesCellProps): React.JSX.Element => {
 								)}
 								{damageRelation.noDamageFrom.length > 0 && (
 									<>
-										<Typography>
+										<Typography component='div'>
 											<Box fontWeight='medium'>
 												Immune to (0x):
 											</Box>
