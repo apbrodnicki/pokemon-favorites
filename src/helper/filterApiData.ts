@@ -1,5 +1,5 @@
 import { capitalizeFirstLetter } from 'helper/helper';
-import type { GenericAbility, GenericDamageRelation, GenericPokemon, GenericType } from 'models/genericModels';
+import type { GenericAbility, GenericAllPokemonResponse, GenericDamageRelation, GenericPokemon, GenericType } from 'models/genericModels';
 import type { Ability, DamageRelation, Pokemon, Stats, Type } from 'models/models';
 
 export const getSprite = (pokemon: GenericPokemon): string => {
@@ -109,4 +109,8 @@ export const filterTypeData = (type: GenericType): Type => {
 		name: type.name,
 		...convertedDamageRelation,
 	};
+};
+
+export const filterAllPokemonData = (allPokemon: GenericAllPokemonResponse): string[] => {
+	return allPokemon.results.map((pokemon) => pokemon.name);
 };

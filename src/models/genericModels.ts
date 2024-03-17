@@ -31,6 +31,14 @@ export interface GenericPokemon {
 	[key: string]: any,
 }
 
+export interface GenericAllPokemonResponse {
+	results: [{
+		name: string,
+		url: string,
+	}],
+	[key: string]: any,
+}
+
 export interface GenericAbility {
 	name: string,
 	effect_entries: [{
