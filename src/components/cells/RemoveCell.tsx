@@ -1,27 +1,18 @@
 import RemoveCircleTwoToneIcon from '@mui/icons-material/RemoveCircleTwoTone';
 import { Box } from '@mui/material';
 import { CustomTooltip } from 'components/custom/CustomTooltip';
-import React from 'react';
+import { PokemonListContext } from 'contexts/PokemonListContext';
+import { SnackbarContext } from 'contexts/SnackbarContext';
+import React, { useContext } from 'react';
 
 interface RemoveCellProps {
 	name: string,
-	pokemonList: string[],
-	setPokemonList: React.Dispatch<React.SetStateAction<string[]>>,
-	setSnackbarOpen: React.Dispatch<React.SetStateAction<boolean>>,
-	setSnackbarMessage: React.Dispatch<React.SetStateAction<string>>,
-	setSnackbarColor: React.Dispatch<React.SetStateAction<'success' | 'info' | 'warning' | 'error'>>
 }
 
-export const RemoveCell = (
-	{
-		name,
-		pokemonList,
-		setPokemonList,
-		setSnackbarOpen,
-		setSnackbarMessage,
-		setSnackbarColor
-	}: RemoveCellProps
-): React.JSX.Element => {
+export const RemoveCell = ({ name }: RemoveCellProps): React.JSX.Element => {
+	const { setSnackbarOpen, setSnackbarMessage, setSnackbarColor } = useContext(SnackbarContext);
+	const { pokemonList, setPokemonList } = useContext(PokemonListContext);
+
 	const onIconClick = (): void => {
 		setSnackbarMessage('Success: Pokémon removed.');
 		setSnackbarColor('success');
@@ -30,12 +21,10 @@ export const RemoveCell = (
 	};
 
 	return (
-		<>
-			<CustomTooltip title='Remove Pokémon from list.'>
-				<Box sx={{ cursor: 'pointer' }}>
-					<RemoveCircleTwoToneIcon onClick={onIconClick} />
-				</Box>
-			</CustomTooltip>
-		</>
+		<CustomTooltip title='Remove Pokémon from list.'>
+			<Box sx={{ cursor: 'pointer' }}>
+				<RemoveCircleTwoToneIcon onClick={onIconClick} />
+			</Box>
+		</CustomTooltip>
 	);
 };

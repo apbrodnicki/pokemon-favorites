@@ -1,25 +1,15 @@
 import { Autocomplete, Button, Grid, Paper, TextField } from '@mui/material';
 import { useFetchAllPokemon } from 'api/useFetchAllPokemon';
-import React, { useEffect, useState } from 'react';
-
-interface UpdatePokemonProps {
-	pokemonList: string[],
-	setPokemonList: React.Dispatch<React.SetStateAction<string[]>>,
-	setSnackbarOpen: React.Dispatch<React.SetStateAction<boolean>>,
-	setSnackbarMessage: React.Dispatch<React.SetStateAction<string>>,
-	setSnackbarColor: React.Dispatch<React.SetStateAction<'success' | 'info' | 'warning' | 'error'>>
-}
+import { PokemonListContext } from 'contexts/PokemonListContext';
+import { SnackbarContext } from 'contexts/SnackbarContext';
+import React, { useContext, useEffect, useState } from 'react';
 // TODO: Fix input not clearing after submit.
-export const UpdatePokemon = (
-	{
-		pokemonList,
-		setPokemonList,
-		setSnackbarOpen,
-		setSnackbarMessage,
-		setSnackbarColor
-	}: UpdatePokemonProps
-): React.JSX.Element => {
+export const UpdatePokemon = (): React.JSX.Element => {
+	const { setSnackbarOpen, setSnackbarMessage, setSnackbarColor } = useContext(SnackbarContext);
+	const { pokemonList, setPokemonList } = useContext(PokemonListContext);
+
 	const [pokemonInput, setPokemonInput] = useState<string>('');
+
 	const allPokemon = useFetchAllPokemon();
 
 	useEffect(() => {
@@ -78,7 +68,7 @@ export const UpdatePokemon = (
 									variant='filled'
 								/>
 								<Button onClick={() => { UpdatePokemon('add'); }}>
-							Submit
+									Submit
 								</Button>
 							</>
 						)}
@@ -98,7 +88,7 @@ export const UpdatePokemon = (
 									value={pokemonInput}
 								/>
 								<Button onClick={() => { UpdatePokemon('remove'); }}>
-							Submit
+									Submit
 								</Button>
 							</>
 						)}

@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import type { GridColDef } from '@mui/x-data-grid';
 import { AbilitiesCell } from 'components/cells/AbilitiesCell';
 import { RemoveCell } from 'components/cells/RemoveCell';
@@ -9,25 +9,10 @@ import React from 'react';
 
 interface getDataGridColumnsProps {
 	abilitiesWithDescriptions: Ability[],
-	types: Type[],
-	pokemonList: string[],
-	setPokemonList: React.Dispatch<React.SetStateAction<string[]>>,
-	setSnackbarOpen: React.Dispatch<React.SetStateAction<boolean>>,
-	setSnackbarMessage: React.Dispatch<React.SetStateAction<string>>,
-	setSnackbarColor: React.Dispatch<React.SetStateAction<'success' | 'info' | 'warning' | 'error'>>
+	types: Type[]
 }
 
-export const getDataGridColumns = (
-	{
-		abilitiesWithDescriptions,
-		types,
-		pokemonList,
-		setPokemonList,
-		setSnackbarOpen,
-		setSnackbarMessage,
-		setSnackbarColor
-	} : getDataGridColumnsProps
-): GridColDef[] => {
+export const getDataGridColumns = ({ abilitiesWithDescriptions, types } : getDataGridColumnsProps): GridColDef[] => {
 	return [
 		{
 			field: 'remove',
@@ -36,16 +21,7 @@ export const getDataGridColumns = (
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) => (
-				<RemoveCell
-					name={param.row.originalName}
-					pokemonList={pokemonList}
-					setPokemonList={setPokemonList}
-					setSnackbarOpen={setSnackbarOpen}
-					setSnackbarMessage={setSnackbarMessage}
-					setSnackbarColor={setSnackbarColor}
-				/>
-			)
+			renderCell: (param) => <RemoveCell name={param.row.originalName} />
 		},
 		{
 			field: 'name',
@@ -65,7 +41,7 @@ export const getDataGridColumns = (
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: (param) => <img src={param.value} alt='sprite' />
+			renderCell: (param) => <Box component='img' src={param.value} alt='sprite' />
 		},
 		{
 			field: 'types',

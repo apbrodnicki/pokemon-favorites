@@ -1,16 +1,10 @@
 import { Alert, Snackbar } from '@mui/material';
-import React from 'react';
+import { SnackbarContext } from 'contexts/SnackbarContext';
+import React, { useContext } from 'react';
 
-interface CustomSnackbarProps {
-	snackbarOpen: boolean,
-	setSnackbarOpen: React.Dispatch<React.SetStateAction<boolean>>,
-	severity: 'success' | 'info' | 'warning' | 'error',
-	message: string,
-}
+export const CustomSnackbar = (): React.JSX.Element => {
+	const { snackbarOpen, setSnackbarOpen, snackbarMessage, snackbarColor } = useContext(SnackbarContext);
 
-export const CustomSnackbar = (
-	{ snackbarOpen, setSnackbarOpen, severity, message }: CustomSnackbarProps
-): React.JSX.Element => {
 	return (
 		<Snackbar
 			open={snackbarOpen}
@@ -19,11 +13,11 @@ export const CustomSnackbar = (
 			anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
 		>
 			<Alert
-				severity={severity}
+				severity={snackbarColor}
 				variant='filled'
 				sx={{ width: '100%' }}
 			>
-				{message}
+				{snackbarMessage}
 			</Alert>
 		</Snackbar>
 	);
