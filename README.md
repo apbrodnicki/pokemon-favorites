@@ -10,7 +10,7 @@ It is hosted using Github Pages, follow this link to view: https://apbrodnicki.g
 
 The project is built in React/Typescript.
 
-It uses Material UI for the frontend, React Router for routing, and gh-pages for deployment.
+It uses Material UI for the frontend and gh-pages for deployment.
 
 The backend data is supplied by [PokéApi](https://pokeapi.co/).
 
