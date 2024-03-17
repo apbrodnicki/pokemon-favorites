@@ -64,42 +64,46 @@ export const UpdatePokemon = (
 
 	return (
 		<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
-			<Grid container>
-				<Autocomplete
-					options={allPokemon}
-					isOptionEqualToValue={(option, value) => option === value}
-					onChange={(_, value) => { onAutocompleteChange(value); }}
-					renderInput={(params) => (
-						<>
-							<TextField
-								{...params}
-								label='Add Pokémon'
-								variant='filled'
-							/>
-							<Button onClick={() => { UpdatePokemon('add'); }}>
+			<Grid container justifyContent='center'>
+				<Grid item xs={5} mx={3}>
+					<Autocomplete
+						options={allPokemon}
+						isOptionEqualToValue={(option, value) => option === value}
+						onChange={(_, value) => { onAutocompleteChange(value); }}
+						renderInput={(params) => (
+							<>
+								<TextField
+									{...params}
+									label='Add Pokémon'
+									variant='filled'
+								/>
+								<Button onClick={() => { UpdatePokemon('add'); }}>
 							Submit
-							</Button>
-						</>
-					)}
-				/>
-				<Autocomplete
-					options={pokemonList}
-					isOptionEqualToValue={(option, value) => option === value}
-					onChange={(_, value) => { onAutocompleteChange(value); }}
-					renderInput={(params) => (
-						<>
-							<TextField
-								{...params}
-								label='Remove Pokémon'
-								variant='filled'
-								value={pokemonInput}
-							/>
-							<Button onClick={() => { UpdatePokemon('remove'); }}>
+								</Button>
+							</>
+						)}
+					/>
+				</Grid>
+				<Grid item xs={5} mx={3}>
+					<Autocomplete
+						options={pokemonList}
+						isOptionEqualToValue={(option, value) => option === value}
+						onChange={(_, value) => { onAutocompleteChange(value); }}
+						renderInput={(params) => (
+							<>
+								<TextField
+									{...params}
+									label='Remove Pokémon'
+									variant='filled'
+									value={pokemonInput}
+								/>
+								<Button onClick={() => { UpdatePokemon('remove'); }}>
 							Submit
-							</Button>
-						</>
-					)}
-				/>
+								</Button>
+							</>
+						)}
+					/>
+				</Grid>
 			</Grid>
 		</Paper>
 	);
