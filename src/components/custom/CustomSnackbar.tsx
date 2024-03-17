@@ -16,7 +16,7 @@ export const CustomSnackbar = (
 			open={snackbarOpen}
 			autoHideDuration={5000}
 			onClose={() => { setSnackbarOpen(false); }}
-			anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+			anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
 		>
 			<Alert
 				severity={severity}
