@@ -5,24 +5,32 @@ import { useFetchPokemon } from 'api/useFetchPokemon';
 import { useFetchTypes } from 'api/useFetchTypes';
 import loader from 'assets/loader.webm';
 import { getDataGridColumns } from 'helper/getDataGridColumns';
-import { getPokemonList, reduceArray } from 'helper/helper';
-import { type Pokemon, type PokemonListsTemplate } from 'models/models';
+import { reduceArray } from 'helper/helper';
+import { type Pokemon } from 'models/models';
 import React, { useState } from 'react';
-import { GridTitleCard } from './GridTitleCard';
 
 interface PokemonDataGridProps {
-	list: keyof PokemonListsTemplate,
-	title: string,
+	pokemonList: string[],
+	setPokemonList: React.Dispatch<React.SetStateAction<string[]>>,
+	setSnackbarOpen: React.Dispatch<React.SetStateAction<boolean>>,
+	setSnackbarMessage: React.Dispatch<React.SetStateAction<string>>,
+	setSnackbarColor: React.Dispatch<React.SetStateAction<'success' | 'info' | 'warning' | 'error'>>
 }
 
-export const PokemonDataGrid = (props: PokemonDataGridProps): React.JSX.Element => {
+export const PokemonDataGrid = (
+	{
+		pokemonList,
+		setPokemonList,
+		setSnackbarOpen,
+		setSnackbarMessage,
+		setSnackbarColor
+	}: PokemonDataGridProps
+): React.JSX.Element => {
 	const [isLoadingPokemon, setIsLoadingPokemon] = useState<boolean>(true);
 	const [isLoadingAbilityDescriptions, setIsLoadingAbilityDescriptions] = useState<boolean>(true);
 	const [isLoadingTypes, setIsLoadingTypes] = useState<boolean>(true);
 	const isLoading = isLoadingPokemon || isLoadingAbilityDescriptions || isLoadingTypes;
-	const setIsLoadingFunctions = [setIsLoadingPokemon, setIsLoadingAbilityDescriptions, setIsLoadingTypes];
 
-	const pokemonList = getPokemonList(props.list);
 	const pokemon = useFetchPokemon({ pokemonList, setIsLoadingPokemon });
 
 	const abilities = reduceArray(pokemon.map(mon => mon.abilities));
@@ -31,13 +39,20 @@ export const PokemonDataGrid = (props: PokemonDataGridProps): React.JSX.Element 
 	const typesList = reduceArray(pokemon.map(mon => mon.types));
 	const types = useFetchTypes({ typesList, setIsLoadingTypes });
 
-	const columns: GridColDef[] = getDataGridColumns(abilitiesWithDescriptions, types);
+	const columns: GridColDef[] = getDataGridColumns({
+		abilitiesWithDescriptions,
+		types,
+		pokemonList,
+		setPokemonList,
+		setSnackbarOpen,
+		setSnackbarMessage,
+		setSnackbarColor
+	});
 
 	return (
 		<>
 			{!isLoading ? (
 				<>
-					<GridTitleCard title={props.title} setIsLoadingFunctions={setIsLoadingFunctions} />
 					<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 						<Box height={700} sx={{
 							'& .header': {

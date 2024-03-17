@@ -1,22 +1,51 @@
-import RemoveCircleTwoToneIcon from '@mui/icons-material/RemoveCircleTwoTone';
 import { Typography } from '@mui/material';
 import type { GridColDef } from '@mui/x-data-grid';
 import { AbilitiesCell } from 'components/cells/AbilitiesCell';
+import { RemoveCell } from 'components/cells/RemoveCell';
 import { StatCell } from 'components/cells/StatCell';
 import { TypesCell } from 'components/cells/TypesCell';
 import type { Ability, Type } from 'models/models';
 import React from 'react';
 
-export const getDataGridColumns = (abilitiesWithDescriptions: Ability[], types: Type[]): GridColDef[] => {
+interface getDataGridColumnsProps {
+	abilitiesWithDescriptions: Ability[],
+	types: Type[],
+	pokemonList: string[],
+	setPokemonList: React.Dispatch<React.SetStateAction<string[]>>,
+	setSnackbarOpen: React.Dispatch<React.SetStateAction<boolean>>,
+	setSnackbarMessage: React.Dispatch<React.SetStateAction<string>>,
+	setSnackbarColor: React.Dispatch<React.SetStateAction<'success' | 'info' | 'warning' | 'error'>>
+}
+
+export const getDataGridColumns = (
+	{
+		abilitiesWithDescriptions,
+		types,
+		pokemonList,
+		setPokemonList,
+		setSnackbarOpen,
+		setSnackbarMessage,
+		setSnackbarColor
+	} : getDataGridColumnsProps
+): GridColDef[] => {
 	return [
 		{
 			field: 'remove',
-			headerName: 'Remove',
+			headerName: '',
 			width: 75,
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
-			renderCell: () => <RemoveCircleTwoToneIcon />
+			renderCell: (param) => (
+				<RemoveCell
+					name={param.row.originalName}
+					pokemonList={pokemonList}
+					setPokemonList={setPokemonList}
+					setSnackbarOpen={setSnackbarOpen}
+					setSnackbarMessage={setSnackbarMessage}
+					setSnackbarColor={setSnackbarColor}
+				/>
+			)
 		},
 		{
 			field: 'name',

@@ -1,6 +1,3 @@
-import { pokemonLists } from 'data';
-import { type PokemonListsTemplate } from 'models/models';
-
 export const formatAbilityName = (name: string): string => {
 	const updatedNameArray: string[] = [];
 
@@ -13,10 +10,6 @@ export const formatAbilityName = (name: string): string => {
 
 export const capitalizeFirstLetter = (word: string): string => {
 	return word.charAt(0).toUpperCase() + word.slice(1);
-};
-
-export const formatPageForRoute = (page: string): string => {
-	return page.replace(/\s/g, '').toLowerCase();
 };
 
 export const getProgressColor = (progressValue: number): string => {
@@ -40,10 +33,6 @@ export const getProgressColor = (progressValue: number): string => {
 	}
 
 	return 'primary';
-};
-
-export const getPokemonList = (list: keyof PokemonListsTemplate): string[] => {
-	return pokemonLists[list];
 };
 
 export const reduceArray = (abilities: string[][]): string[] => {
