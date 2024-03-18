@@ -1,7 +1,6 @@
 import { Box, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Header = (): React.JSX.Element => {
@@ -22,22 +21,18 @@ export const Header = (): React.JSX.Element => {
 						mx={2}
 					/>
 				</CustomTooltip>
-				<CustomTooltip title='Home Page'>
-					<Link to='/' style={{ textDecoration: 'none' }}>
-						<Typography
-							color='black'
-							align='center'
-							sx={{
-								typography: {
-									md: 'h1',
-									xs: 'h6'
-								}
-							}}
-						>
-						Pokémon Favorites
-						</Typography>
-					</Link>
-				</CustomTooltip>
+				<Typography
+					color='black'
+					align='center'
+					sx={{
+						typography: {
+							md: 'h1',
+							xs: 'h6'
+						}
+					}}
+				>
+					Pokémon Favorites
+				</Typography>
 				<CustomTooltip title='Cradily'>
 					<Box
 						component='img'

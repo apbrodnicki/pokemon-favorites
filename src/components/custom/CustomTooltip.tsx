@@ -6,18 +6,14 @@ interface CustomTooltipProps {
 	children: React.PropsWithChildren<React.JSX.Element>
 }
 
-export const CustomTooltip = (
-	{ title, children }: CustomTooltipProps
-): React.JSX.Element => {
-	return (
-		<Tooltip
-			title={title}
-			TransitionComponent={Zoom}
-			placement='top'
-			leaveDelay={100}
-			arrow
-		>
-			{children}
-		</Tooltip>
-	);
-};
+export const CustomTooltip = ({ title, children }: CustomTooltipProps): React.JSX.Element => (
+	<Tooltip
+		title={title}
+		TransitionComponent={Zoom}
+		placement='top'
+		leaveDelay={100}
+		arrow
+	>
+		{children}
+	</Tooltip>
+);
