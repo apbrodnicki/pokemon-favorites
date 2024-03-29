@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Grid, Paper, Typography } from '@mui/material';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 import { PokemonDataGrid } from 'components/PokemonDataGrid';
@@ -32,13 +32,22 @@ export const App = (): React.JSX.Element => {
 						{pokemonList.length > 0 ? (
 							<PokemonDataGrid />
 						) : (
-							<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
-								<Box p={5}>
-									<Typography align='center'>
-										Add some Pokémon to learn more about them!
-									</Typography>
-								</Box>
-							</Paper>
+							<Grid container justifyContent='center'>
+								<Grid item maxWidth='50%'>
+									<Paper
+										elevation={3}
+										sx={{
+											m: 5,
+											backgroundColor: '#B8D8D8'
+										}}>
+										<Box p={5}>
+											<Typography align='center'>
+												Add some Pokémon to learn more about them!
+											</Typography>
+										</Box>
+									</Paper>
+								</Grid>
+							</Grid>
 						)}
 					</PokemonListContext.Provider>
 					<CustomSnackbar />

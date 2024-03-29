@@ -59,9 +59,9 @@ export const UpdatePokemon = (): React.JSX.Element => {
 	};
 
 	return (
-		<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
-			<Grid container justifyContent='center'>
-				<Grid item xs={5} mx={3}>
+		<Grid container justifyContent='center'>
+			<Grid item xs={12} lg={5} mx={3}>
+				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 					<Autocomplete
 						options={allPokemon}
 						multiple
@@ -92,8 +92,10 @@ export const UpdatePokemon = (): React.JSX.Element => {
 							</>
 						)}
 					/>
-				</Grid>
-				<Grid item xs={5} mx={3}>
+				</Paper>
+			</Grid>
+			<Grid item xs={12} lg={5} mx={3}>
+				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 					<Autocomplete
 						options={pokemonList}
 						multiple
@@ -125,8 +127,8 @@ export const UpdatePokemon = (): React.JSX.Element => {
 							</>
 						)}
 					/>
-				</Grid>
+				</Paper>
 			</Grid>
-		</Paper>
+		</Grid>
 	);
 };
