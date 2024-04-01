@@ -1,6 +1,7 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Box, Link as MuiLink, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
+import pokeApiLogo from 'assets/pokeapi-logo.svg';
 import React from 'react';
 import { CustomTooltip } from './custom/CustomTooltip';
 
@@ -22,30 +23,33 @@ export const Footer = (): React.JSX.Element => {
 						mx={2}
 					/>
 				</CustomTooltip>
-				<Box
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					<Box mx={2}>
-						<Typography variant='subtitle2'>
+				<Box>
+					<Box display='flex' alignItems='center' justifyContent='center'>
+						<Typography variant='subtitle2' mx={1}>
 							Created by Alex Brodnicki
 						</Typography>
-						<CustomTooltip title='The PokéAPI website'>
-							<MuiLink href='https://pokeapi.co/' target='_blank' underline='hover' color='black'>
-								<Typography variant='subtitle2'>
-								Data provided by PokéAPI
-								</Typography>
-							</MuiLink>
-						</CustomTooltip>
-					</Box>
-					<CustomTooltip title='Me!'>
-						<MuiLink href='https://github.com/apbrodnicki' target='_blank'>
-							<GitHubIcon fontSize='large' />
+						<MuiLink href='https://github.com/apbrodnicki' target='_blank' mx={1}>
+							<CustomTooltip title='My GitHub'>
+								<GitHubIcon fontSize='large' />
+							</CustomTooltip>
 						</MuiLink>
-					</CustomTooltip>
+					</Box>
+					<Box display='flex' alignItems='center' justifyContent='center'>
+						<Typography variant='subtitle2' mx={1}>
+								Data provided by PokéApi
+						</Typography>
+						<MuiLink href='https://pokeapi.co/' target='_blank' underline='hover' color='black' mx={1}>
+							<CustomTooltip title='PokéApi Website'>
+								<Box
+									component='img'
+									src={pokeApiLogo}
+									alt='PokéApi logo'
+									width='62.5px'
+									height='25px'
+								/>
+							</CustomTooltip>
+						</MuiLink>
+					</Box>
 				</Box>
 				<CustomTooltip title='Omastar'>
 					<Box
