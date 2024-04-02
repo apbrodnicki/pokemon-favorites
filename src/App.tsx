@@ -33,7 +33,7 @@ export const App = (): React.JSX.Element => {
 							<PokemonDataGrid />
 						) : (
 							<Grid container justifyContent='center'>
-								<Grid item maxWidth='50%'>
+								<Grid item maxWidth='90%'>
 									<Paper
 										elevation={3}
 										sx={{

@@ -26,7 +26,7 @@ export const Header = (): React.JSX.Element => {
 					align='center'
 					sx={{
 						typography: {
-							md: 'h1',
+							sm: 'h3',
 							xs: 'h6'
 						}
 					}}

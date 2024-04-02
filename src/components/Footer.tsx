@@ -15,14 +15,16 @@ export const Footer = (): React.JSX.Element => {
 					justifyContent: 'center',
 				}}
 			>
-				<CustomTooltip title='Rampardos'>
-					<Box
-						component='img'
-						src={useFetchSprite('rampardos')}
-						alt='rampardos'
-						mx={2}
-					/>
-				</CustomTooltip>
+				<Box display={{ sm: 'block', xs: 'none' }}>
+					<CustomTooltip title='Rampardos'>
+						<Box
+							component='img'
+							src={useFetchSprite('rampardos')}
+							alt='rampardos'
+							mx={2}
+						/>
+					</CustomTooltip>
+				</Box>
 				<Box>
 					<Box display='flex' alignItems='center' justifyContent='center'>
 						<Typography variant='subtitle2' mx={1}>
@@ -51,14 +53,16 @@ export const Footer = (): React.JSX.Element => {
 						</MuiLink>
 					</Box>
 				</Box>
-				<CustomTooltip title='Omastar'>
-					<Box
-						component='img'
-						src={useFetchSprite('omastar')}
-						alt='omastar'
-						mx={2}
-					/>
-				</CustomTooltip>
+				<Box display={{ sm: 'block', xs: 'none' }}>
+					<CustomTooltip title='Omastar'>
+						<Box
+							component='img'
+							src={useFetchSprite('omastar')}
+							alt='omastar'
+							mx={2}
+						/>
+					</CustomTooltip>
+				</Box>
 			</Box>
 		</Paper >
 	);
