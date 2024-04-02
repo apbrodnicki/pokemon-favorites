@@ -17,7 +17,7 @@ export const App = (): React.JSX.Element => {
 	const [snackbarColor, setSnackbarColor] = useState<'success' | 'info' | 'warning' | 'error'>('success');
 
 	const [pokemonList, setPokemonList] = useState<string[]>(() => {
-		const list = localStorage.getItem('pokemon-favorites_list');
+		const list = localStorage.getItem('pokemon-directory-list');
 
 		return (list !== null) ? JSON.parse(list) : [];
 	});

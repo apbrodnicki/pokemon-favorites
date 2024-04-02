@@ -1,7 +1,7 @@
 {
-	"name": "pokemon-favorites",
+	"name": "pokemon-directory",
 	"version": "1.0.0",
-	"homepage": "https://apbrodnicki.github.io/pokemon-favorites/",
+	"homepage": "https://apbrodnicki.github.io/pokemon-directory/",
 	"private": true,
 	"dependencies": {
 		"@emotion/react": "^11.11.3",

@@ -31,7 +31,7 @@ export const Header = (): React.JSX.Element => {
 						}
 					}}
 				>
-					Pokémon Favorites
+					Pokémon Directory
 				</Typography>
 				<CustomTooltip title='Cradily'>
 					<Box

@@ -13,7 +13,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 	const allPokemon = useFetchAllPokemon();
 
 	useEffect(() => {
-		localStorage.setItem('pokemon-favorites_list', JSON.stringify(pokemonList));
+		localStorage.setItem('pokemon-directory-list', JSON.stringify(pokemonList));
 	}, [pokemonList]);
 
 	const onAutocompleteChange = (value: string[]): void => {
