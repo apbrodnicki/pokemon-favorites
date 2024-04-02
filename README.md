@@ -1,10 +1,9 @@
-# Pokémon Favorites
-
-This is an application that showcases a user's favorite list of Pokémon.
+# Pokémon Directory
+This is an application that showcases data about Pokémon.
 
 The user can add or remove any existing Pokémon they want and will have their data saved in Local Storage.
 
-It is hosted using Github Pages, follow this link to view: https://apbrodnicki.github.io/pokemon-favorites/
+It is hosted using Github Pages, follow this link to view: https://apbrodnicki.github.io/pokemon-directory.
 
 ## Packages
 
@@ -62,4 +61,4 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 ___
 
-*pokemon-favorites was created by Alex Brodnicki.*
+*pokemon-directory was created by Alex Brodnicki.*
