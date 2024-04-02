@@ -1,6 +1,6 @@
 {
-	"short_name": "Pokémon Favorites",
-	"name": "A page of all of my favorite Pokémon!",
+	"short_name": "Pokémon Directory",
+	"name": "A directory of Pokémon!",
 	"icons": [
 		{
 			"src": "logo.svg",
