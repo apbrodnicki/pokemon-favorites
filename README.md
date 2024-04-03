@@ -12,7 +12,7 @@ It is hosted using Github Pages, you may view the website <a href="https://apbro
 ## Packages
 The project is built in React/Typescript.
 
-It uses Material UI for the frontend and gh-pages for deployment.
+It uses [MUI](https://mui.com/) for the frontend and [gh-pages](https://github.com/tschaub/gh-pages) for deployment.
 
 The backend data is supplied by [PokéApi](https://pokeapi.co/).
 
