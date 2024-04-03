@@ -1,6 +1,13 @@
 body {
 	background-color: #4F6367;
-};
+	margin: 0;
+}
+
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
 
 /* theme:
 '#4F6367'
