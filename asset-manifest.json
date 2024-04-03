@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/pokemon-directory/static/css/main.d57db59d.css",
-    "main.js": "/pokemon-directory/static/js/main.b7389b5f.js",
+    "main.css": "/pokemon-directory/static/css/main.f9a0f2af.css",
+    "main.js": "/pokemon-directory/static/js/main.0eaf4d5c.js",
     "static/media/loader.webm": "/pokemon-directory/static/media/loader.ae9a77a4394a6c0f4c08.webm",
     "static/media/roboto-latin-500-normal.woff2": "/pokemon-directory/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
     "static/media/roboto-latin-700-normal.woff2": "/pokemon-directory/static/media/roboto-latin-700-normal.227c93190fe7f82de3f8.woff2",
@@ -61,11 +61,11 @@
     "static/media/roboto-greek-ext-400-normal.woff": "/pokemon-directory/static/media/roboto-greek-ext-400-normal.f708607d2a7290fb8bfa.woff",
     "static/media/roboto-greek-ext-700-normal.woff": "/pokemon-directory/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "index.html": "/pokemon-directory/index.html",
-    "main.d57db59d.css.map": "/pokemon-directory/static/css/main.d57db59d.css.map",
-    "main.b7389b5f.js.map": "/pokemon-directory/static/js/main.b7389b5f.js.map"
+    "main.f9a0f2af.css.map": "/pokemon-directory/static/css/main.f9a0f2af.css.map",
+    "main.0eaf4d5c.js.map": "/pokemon-directory/static/js/main.0eaf4d5c.js.map"
   },
   "entrypoints": [
-    "static/css/main.d57db59d.css",
-    "static/js/main.b7389b5f.js"
+    "static/css/main.f9a0f2af.css",
+    "static/js/main.0eaf4d5c.js"
   ]
 }
