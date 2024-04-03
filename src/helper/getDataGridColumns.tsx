@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import type { GridColDef } from '@mui/x-data-grid';
 import { AbilitiesCell } from 'components/cells/AbilitiesCell';
 import { RemoveCell } from 'components/cells/RemoveCell';
+import { RemoveCellHeader } from 'components/cells/RemoveCellHeader';
 import { StatCell } from 'components/cells/StatCell';
 import { TypesCell } from 'components/cells/TypesCell';
 import type { Ability, Type } from 'models/models';
@@ -16,11 +17,15 @@ export const getDataGridColumns = ({ abilitiesWithDescriptions, types } : getDat
 	return [
 		{
 			field: 'remove',
-			headerName: '',
 			width: 75,
 			headerAlign: 'center',
 			headerClassName: 'header',
 			align: 'center',
+			sortable: false,
+			filterable: false,
+			disableColumnMenu: true,
+			disableReorder: true,
+			renderHeader: () => <RemoveCellHeader />,
 			renderCell: (param) => <RemoveCell name={param.row.originalName} />
 		},
 		{
