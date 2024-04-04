@@ -3,12 +3,13 @@ import { useFetchAllPokemon } from 'api/useFetchAllPokemon';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { SnackbarContext } from 'contexts/SnackbarContext';
 import React, { useContext, useEffect, useState } from 'react';
-// TODO: Fix input not clearing after submit.
+
 export const UpdatePokemon = (): React.JSX.Element => {
 	const { setSnackbarOpen, setSnackbarMessage, setSnackbarColor } = useContext(SnackbarContext);
 	const { pokemonList, setPokemonList } = useContext(PokemonListContext);
 
 	const [pokemonInput, setPokemonInput] = useState<string[]>([]);
+	const [autocompleteKey, setAutocompleteKey] = useState<string>('');
 
 	const allPokemon = useFetchAllPokemon();
 
@@ -25,8 +26,6 @@ export const UpdatePokemon = (): React.JSX.Element => {
 			setSnackbarMessage('Error: Input value is empty.');
 			setSnackbarColor('error');
 			setSnackbarOpen(true);
-
-			setPokemonInput([]);
 
 			return;
 		}
@@ -58,11 +57,16 @@ export const UpdatePokemon = (): React.JSX.Element => {
 		setPokemonInput([]);
 	};
 
+	const UpdateAutocompleteKey = (): void => {
+		setAutocompleteKey(`key-${Math.random().toString(36).substring(2, 11)}`);
+	};
+
 	return (
 		<Grid container justifyContent='center'>
 			<Grid item xs={12} lg={5} mx={3}>
 				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 					<Autocomplete
+						key={autocompleteKey}
 						options={allPokemon}
 						multiple
 						disableCloseOnSelect
@@ -86,7 +90,10 @@ export const UpdatePokemon = (): React.JSX.Element => {
 									label='Add Pokémon'
 									variant='filled'
 								/>
-								<Button onClick={() => { UpdatePokemon('add'); }}>
+								<Button onClick={() => {
+									UpdatePokemon('add');
+									UpdateAutocompleteKey();
+								}}>
 									Submit
 								</Button>
 							</>
@@ -97,6 +104,7 @@ export const UpdatePokemon = (): React.JSX.Element => {
 			<Grid item xs={12} lg={5} mx={3}>
 				<Paper elevation={3} sx={{ m: 5, backgroundColor: '#B8D8D8' }}>
 					<Autocomplete
+						key={autocompleteKey}
 						options={pokemonList}
 						multiple
 						disableCloseOnSelect
@@ -119,9 +127,11 @@ export const UpdatePokemon = (): React.JSX.Element => {
 									{...params}
 									label='Remove Pokémon'
 									variant='filled'
-									value={pokemonInput}
 								/>
-								<Button onClick={() => { UpdatePokemon('remove'); }}>
+								<Button onClick={() => {
+									UpdatePokemon('remove');
+									UpdateAutocompleteKey();
+								}}>
 									Submit
 								</Button>
 							</>
