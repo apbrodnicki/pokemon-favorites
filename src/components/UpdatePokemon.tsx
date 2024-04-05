@@ -1,63 +1,27 @@
 import { Autocomplete, Button, Grid, ListItem, Paper, TextField } from '@mui/material';
 import { useFetchAllPokemon } from 'api/useFetchAllPokemon';
 import { PokemonListContext } from 'contexts/PokemonListContext';
-import { SnackbarContext } from 'contexts/SnackbarContext';
-import React, { useContext, useEffect, useState } from 'react';
+import { useUpdatePokemon } from 'helper/useUpdatePokemon';
+import React, { useContext, useState } from 'react';
 
 export const UpdatePokemon = (): React.JSX.Element => {
-	const { setSnackbarOpen, setSnackbarMessage, setSnackbarColor } = useContext(SnackbarContext);
-	const { pokemonList, setPokemonList } = useContext(PokemonListContext);
+	const { pokemonList } = useContext(PokemonListContext);
 
 	const [pokemonInput, setPokemonInput] = useState<string[]>([]);
 	const [autocompleteKey, setAutocompleteKey] = useState<string>('');
 
 	const allPokemon = useFetchAllPokemon();
-
-	useEffect(() => {
-		localStorage.setItem('pokemon-directory-list', JSON.stringify(pokemonList));
-	}, [pokemonList]);
+	const updatePokemon = useUpdatePokemon();
 
 	const onAutocompleteChange = (value: string[]): void => {
 		setPokemonInput(value);
 	};
 
-	const UpdatePokemon = (action: 'add' | 'remove'): void => {
-		if (pokemonInput.length < 1) {
-			setSnackbarMessage('Error: Input value is empty.');
-			setSnackbarColor('error');
-			setSnackbarOpen(true);
-
-			return;
-		}
-
-		if (action === 'add') {
-			for (const name of pokemonInput) {
-				if (pokemonList.includes(name)) {
-					setSnackbarMessage(`Error: ${name} has already been added.`);
-					setSnackbarColor('error');
-					setSnackbarOpen(true);
-
-					return;
-				}
-			}
-
-			setPokemonList([...pokemonList, ...pokemonInput]);
-
-			setSnackbarMessage('Success: Pokémon added.');
-			setSnackbarColor('success');
-			setSnackbarOpen(true);
-		} else if (action === 'remove') {
-			setPokemonList(pokemonList.filter((name) => !pokemonInput.includes(name)));
-
-			setSnackbarMessage('Success: Pokémon removed.');
-			setSnackbarColor('success');
-			setSnackbarOpen(true);
-		}
-
-		setPokemonInput([]);
+	const onClick = (action: 'add' | 'remove'): void => {
+		updatePokemon({ action, pokemonInput, setPokemonInput });
 	};
 
-	const UpdateAutocompleteKey = (): void => {
+	const updateAutocompleteKey = (): void => {
 		setAutocompleteKey(`key-${Math.random().toString(36).substring(2, 11)}`);
 	};
 
@@ -91,8 +55,8 @@ export const UpdatePokemon = (): React.JSX.Element => {
 									variant='filled'
 								/>
 								<Button onClick={() => {
-									UpdatePokemon('add');
-									UpdateAutocompleteKey();
+									onClick('add');
+									updateAutocompleteKey();
 								}}>
 									Submit
 								</Button>
@@ -129,8 +93,8 @@ export const UpdatePokemon = (): React.JSX.Element => {
 									variant='filled'
 								/>
 								<Button onClick={() => {
-									UpdatePokemon('remove');
-									UpdateAutocompleteKey();
+									onClick('remove');
+									updateAutocompleteKey();
 								}}>
 									Submit
 								</Button>
