@@ -1,9 +1,24 @@
 import { Box, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
-import React from 'react';
+import { PokemonListContext } from 'contexts/PokemonListContext';
+import { useUpdatePokemon, type updatePokemonProps } from 'helper/useUpdatePokemon';
+import React, { useContext } from 'react';
 import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Header = (): React.JSX.Element => {
+	const { pokemonList } = useContext(PokemonListContext);
+
+	const updatePokemon = useUpdatePokemon();
+
+	const onClick = (name: string): void => {
+		let action: updatePokemonProps['action'] = 'add';
+		if (pokemonList.includes(name)) {
+			action = 'remove';
+		}
+
+		updatePokemon({ action, pokemonInput: [name], setPokemonInput: () => {} });
+	};
+
 	return (
 		<Paper elevation={3} sx={{ m: 2, p: 4, backgroundColor: '#7A9E9f' }}>
 			<Box
@@ -13,10 +28,14 @@ export const Header = (): React.JSX.Element => {
 					justifyContent: 'center',
 				}}
 			>
-				<CustomTooltip title='Aurorus'>
+				<CustomTooltip
+					title='Bastiodon - Click to add or remove.'
+					haveCursor
+					onClick={() => { onClick('bastiodon'); }}
+				>
 					<Box
 						component='img'
-						src={useFetchSprite('aurorus')}
+						src={useFetchSprite('bastiodon')}
 						alt='aurorus'
 						mx={2}
 					/>
@@ -33,7 +52,11 @@ export const Header = (): React.JSX.Element => {
 				>
 					Pokémon Directory
 				</Typography>
-				<CustomTooltip title='Cradily'>
+				<CustomTooltip
+					title='Cradily - Click to add or remove.'
+					haveCursor
+					onClick={() => { onClick('cradily'); }}
+				>
 					<Box
 						component='img'
 						src={useFetchSprite('cradily')}

@@ -6,14 +6,13 @@ import { UpdatePokemon } from 'components/UpdatePokemon';
 import { CustomSnackbar } from 'components/custom/CustomSnackbar';
 import { PokemonListContext } from 'contexts/PokemonListContext';
 import { SnackbarContext } from 'contexts/SnackbarContext';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useOutlet } from 'react-router-dom';
 // TODO:
-// Add option to add pokemon icons from header/footer into data grid.
 // Add custom theme.
-// Add virtualization to autocomplete to improve loading
-// Add sprites and pokedex number into autocomplete and improve styling
-// Add custom row ordering for data grid
+// Add virtualization to autocomplete to improve loading.
+// Add sprites and pokedex number into autocomplete and improve styling.
+// Add custom row ordering for data grid.
 export const App = (): React.JSX.Element => {
 	const outlet = useOutlet();
 
@@ -27,44 +26,50 @@ export const App = (): React.JSX.Element => {
 		return (list !== null) ? JSON.parse(list) : [];
 	});
 
+	useEffect(() => {
+		localStorage.setItem('pokemon-directory-list', JSON.stringify(pokemonList));
+	}, [pokemonList]);
+
 	return (
 		<>
-			<Header />
-			{outlet ?? (
-				<SnackbarContext.Provider value={{ snackbarOpen, setSnackbarOpen, snackbarMessage, setSnackbarMessage, snackbarColor, setSnackbarColor }}>
-					<PokemonListContext.Provider value={{ pokemonList, setPokemonList }}>
-						<Box
-							display='flex'
-							flexDirection='column'
-							justifyContent='center'
-							flex={1}>
-							<UpdatePokemon />
-							{pokemonList.length > 0 ? (
-								<PokemonDataGrid />
-							) : (
-								<Grid container justifyContent='center'>
-									<Grid item maxWidth='90%'>
-										<Paper
-											elevation={3}
-											sx={{
-												m: 5,
-												backgroundColor: '#B8D8D8'
-											}}>
-											<Box p={5}>
-												<Typography align='center'>
-												Add some Pokémon to learn more about them!
-												</Typography>
-											</Box>
-										</Paper>
+			<SnackbarContext.Provider value={{ snackbarOpen, setSnackbarOpen, snackbarMessage, setSnackbarMessage, snackbarColor, setSnackbarColor }}>
+				<PokemonListContext.Provider value={{ pokemonList, setPokemonList }}>
+					<Header />
+					{outlet ?? (
+						<>
+							<Box
+								display='flex'
+								flexDirection='column'
+								justifyContent='center'
+								flex={1}>
+								<UpdatePokemon />
+								{pokemonList.length > 0 ? (
+									<PokemonDataGrid />
+								) : (
+									<Grid container justifyContent='center'>
+										<Grid item maxWidth='90%'>
+											<Paper
+												elevation={3}
+												sx={{
+													m: 5,
+													backgroundColor: '#B8D8D8'
+												}}>
+												<Box p={5}>
+													<Typography align='center'>
+														Add some Pokémon to learn more about them!
+													</Typography>
+												</Box>
+											</Paper>
+										</Grid>
 									</Grid>
-								</Grid>
-							)}
-						</Box>
-					</PokemonListContext.Provider>
-					<CustomSnackbar />
-				</SnackbarContext.Provider>
-			)}
-			<Footer />
+								)}
+							</Box>
+							<CustomSnackbar />
+						</>
+					)}
+					<Footer />
+				</PokemonListContext.Provider>
+			</SnackbarContext.Provider>
 		</>
 	);
 };

@@ -2,10 +2,25 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { Box, Link as MuiLink, Paper, Typography } from '@mui/material';
 import { useFetchSprite } from 'api/useFetchSprite';
 import pokeApiLogo from 'assets/pokeapi-logo.svg';
-import React from 'react';
+import { PokemonListContext } from 'contexts/PokemonListContext';
+import { useUpdatePokemon, type updatePokemonProps } from 'helper/useUpdatePokemon';
+import React, { useContext } from 'react';
 import { CustomTooltip } from './custom/CustomTooltip';
 
 export const Footer = (): React.JSX.Element => {
+	const { pokemonList } = useContext(PokemonListContext);
+
+	const updatePokemon = useUpdatePokemon();
+
+	const onClick = (name: string): void => {
+		let action: updatePokemonProps['action'] = 'add';
+		if (pokemonList.includes(name)) {
+			action = 'remove';
+		}
+
+		updatePokemon({ action, pokemonInput: [name], setPokemonInput: () => {} });
+	};
+
 	return (
 		<Paper elevation={3} sx={{ m: 2, p: 4, backgroundColor: '#7A9E9f' }}>
 			<Box
@@ -16,7 +31,11 @@ export const Footer = (): React.JSX.Element => {
 				}}
 			>
 				<Box display={{ sm: 'block', xs: 'none' }}>
-					<CustomTooltip title='Rampardos'>
+					<CustomTooltip
+						title='Rampardos - Click to add or remove.'
+						haveCursor
+						onClick={() => { onClick('rampardos'); }}
+					>
 						<Box
 							component='img'
 							src={useFetchSprite('rampardos')}
@@ -54,7 +73,11 @@ export const Footer = (): React.JSX.Element => {
 					</Box>
 				</Box>
 				<Box display={{ sm: 'block', xs: 'none' }}>
-					<CustomTooltip title='Omastar'>
+					<CustomTooltip
+						title='Omastar - Click to add or remove.'
+						haveCursor
+						onClick={() => { onClick('omastar'); }}
+					>
 						<Box
 							component='img'
 							src={useFetchSprite('omastar')}
