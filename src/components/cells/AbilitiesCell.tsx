@@ -9,9 +9,7 @@ interface AbilitiesCellProps {
 	abilities: Ability[]
 }
 
-export const AbilitiesCell = (
-	{ abilityStrings, abilities }: AbilitiesCellProps
-): React.JSX.Element => (
+export const AbilitiesCell = ({ abilityStrings, abilities }: AbilitiesCellProps): React.JSX.Element => (
 	<Box>
 		{abilityStrings.map((ability: string, index: number) => {
 			const title = abilities.find(currentAbility => Object.keys(currentAbility).includes(ability));
